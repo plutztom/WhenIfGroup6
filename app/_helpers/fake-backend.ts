@@ -28,8 +28,9 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                         body: {
                             id: user.id,
                             username: user.username,
-                            firstName: user.firstName,
-                            lastName: user.lastName,
+                            fullName: user.fullName,
+                            depaulID: user.depaulID,
+                            isAdmin: user.isAdmin,
                             token: 'fake-jwt-token'
                         }
                     })));

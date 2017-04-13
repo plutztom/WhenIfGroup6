@@ -11,13 +11,19 @@ import { UserService } from '../_services/user.service';
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
+    isAdmin: boolean;
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.isAdmin = JSON.parse(localStorage.getItem(''))
     }
 
     ngOnInit() {
         this.loadAllUsers();
+    }
+
+    showAdmin() {
+        return this.isAdmin;
     }
 
     deleteUser(id: number) {
