@@ -1,7 +1,7 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import {Component, OnInit} from '@angular/core';
 
-import { User } from '../_models/user';
-import { UserService } from '../_services/user.service';
+import {User} from '../_models/user';
+import {UserService} from '../_services/user.service';
 
 @Component({
     moduleId: module.id,
@@ -26,11 +26,13 @@ export class HomeComponent implements OnInit {
         return this.isAdmin;
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
+    //deleteUser(id: number) {
+    //    this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
+    //}
 
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
+        this.userService.getAll().subscribe(users => {
+            this.users = users;
+        });
     }
 }

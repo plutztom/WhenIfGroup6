@@ -15,7 +15,7 @@
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
             <label for="isAdmin">DePaul ID</label>
-            <input type="checkbox" class="form-control" name="isAdmin" [(ngModel)]="model.isAdmin" #isAdmin="ngModel"/>
+            <input type="checkbox" class="form-control" name="isAdmin" [(ngModel)]="model.isAdmin" (ngModelChange)="onChange(model.isAdmin)" #isAdmin="ngModel"/>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
