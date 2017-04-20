@@ -1,4 +1,25 @@
-﻿<div class="col-md-6 col-md-offset-3">
+﻿<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">When If?</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+            <div ngbDropdown>
+                <button class="btn btn-outline-primary" id="dropdownConfig" ngbDropdownToggle>Toggle</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownConfig">
+                    <button class="dropdown-item">My Account</button>
+                    <button class="dropdown-item">Settings</button>
+                    <!--<li class="divider"></li>-->
+                    <a [routerLink]="['/login']" class="dropdown-item">Logout</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="col-md-6 col-md-offset-3">
     <h1>Hi {{currentUser.fullName}}!</h1>
     <p>You're logged in!!</p>
     <!--<p>Admin Status: {{currentUser.isAdmin}}</p>-->
@@ -10,5 +31,4 @@
             <!-- - <a (click)="deleteUser(user.id)">Delete</a>-->
         </li>
     </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
 </div>
