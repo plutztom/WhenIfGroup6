@@ -1,35 +1,37 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">When If?</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">When If?</a>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <div ngbDropdown>
-      <button class="btn btn-outline-primary" id="dropdownConfig" ngbDropdownToggle>Account</button>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownConfig">
-        <a [routerLink]="['/account']" class="dropdown-item">My Account</a>
-        <div class="dropdown-divider"></div>
-        <a [routerLink]="['/login']" class="dropdown-item text-danger">Logout</a>
-      </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div ngbDropdown>
+            <button class="btn btn-outline-primary" id="dropdownConfig" ngbDropdownToggle>Account</button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownConfig">
+                <a [routerLink]="['/account']" class="dropdown-item">My Account</a>
+                <div class="dropdown-divider"></div>
+                <a [routerLink]="['/login']" class="dropdown-item text-danger">Logout</a>
+            </div>
+        </div>
     </div>
-  </div>
 </nav>
 
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-12 col-md-auto">
-      <h1>Hi {{currentUser.fullName}}!</h1>
-      <p>You're logged in!!</p>
-      <!--<p>Admin Status: {{currentUser.isAdmin}}</p>-->
-      <p *ngIf="showAdmin == true">and you're an admin as well!</p>
-      <h3>All registered users:</h3>
-      <ul>
-        <li *ngFor="let user of users">
-          {{user.username}} ({{user.fullName}} {{user.depaulID}})
-          <!-- - <a (click)="deleteUser(user.id)">Delete</a>-->
-        </li>
-      </ul>
+    <div class="row justify-content-md-center">
+        <div class="col-12 col-md-auto">
+            <h1>Hi {{currentUser.fullName}}!</h1>
+            <p>You're logged in!!</p>
+            <!--<p>Admin Status: {{currentUser.isAdmin}}</p>-->
+            <p *ngIf="showAdmin == true">and you're an admin as well!</p>
+            <h3>All registered users:</h3>
+            <ul>
+                <li *ngFor="let user of users">
+                    {{user.username}} ({{user.fullName}} {{user.depaulID}})
+                    <!-- - <a (click)="deleteUser(user.id)">Delete</a>-->
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
