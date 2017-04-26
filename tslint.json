@@ -20,11 +20,6 @@
         "interface-over-type-literal": true,
         "label-position": true,
         "member-access": false,
-        "member-ordering": [
-            true,
-            "static-before-instance",
-            "variables-before-functions"
-        ],
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
@@ -51,7 +46,6 @@
         "no-switch-case-fall-through": true,
         "no-trailing-whitespace": true,
         "no-unused-expression": true,
-        "no-use-before-declare": true,
         "no-var-keyword": true,
         "object-literal-sort-keys": false,
         "one-line": [
@@ -101,11 +95,11 @@
         "use-host-property-decorator": true,
         "no-input-rename": true,
         "no-output-rename": true,
-        "use-life-cycle-interface": true,
+//        "use-life-cycle-interface": true,
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
         "directive-class-suffix": true,
-        "no-access-missing-member": true,
+//        "no-access-missing-member": true,
         "templates-use-public": true,
         "invoke-injectable": true
     }

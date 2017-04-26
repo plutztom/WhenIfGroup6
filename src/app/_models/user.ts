@@ -1,10 +1,9 @@
 export class User {
-    id: number;
-
-    fullName: string;
-    depaulID: number;
-    email: string;
-    isAdmin = false;
-    username: string;
-    password: string;
+    id:         number;
+    fullName:   string;
+    depaulID:   number;
+    email:      string;
+    isAdmin:    boolean;
+    username:   string;
+    password:   string;
 }

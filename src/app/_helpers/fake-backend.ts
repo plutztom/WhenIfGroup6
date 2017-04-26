@@ -40,6 +40,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             id: user.id,
                             username: user.username,
                             fullName: user.fullName,
+                            email: user.email,
                             depaulID: user.depaulID,
                             isAdmin: user.isAdmin,
                             token: 'fake-jwt-token'
@@ -72,7 +73,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     // find user by id in users array
                     const urlParts = connection.request.url.split('/');
-                    const id = parseInt(urlParts[urlParts.length - 1]);
+                    const id = parseInt(urlParts[urlParts.length - 1], 10);
                     const matchedUsers = users.filter(user => {
                         return user.id === id;
                     });

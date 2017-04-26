@@ -23,27 +23,27 @@
     <form>
         <div class="form-group">
             <label for="full-name">Full Name</label>
-            <input type="text" class="form-control" id="full-name" [(ngModel)]="currentUser.username" disabled>
+            <input type="text" class="form-control" id="full-name" value="{{currentUser.fullName}}" disabled>
         </div>
 
         <div class="form-group">
             <label for="id-number">DePaul ID Number</label>
-            <input type="number" class="form-control" id="id-number" [(ngModel)]="currentUser.depaulID" disabled>
+            <input type="number" class="form-control" id="id-number" value="{{currentUser.depaulID}}" disabled>
         </div>
 
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="currentUser.email" disabled>
+            <input type="email" class="form-control" id="email" value="{{currentUser.email}}" disabled>
         </div>
 
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" [(ngModel)]="currentUser.username" disabled>
+            <input type="text" class="form-control" id="username" value="{{currentUser.username}}" disabled>
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" [(ngModel)]="currentUser.password" disabled>
+            <input type="password" class="form-control" id="password" value="{{currentUser.password}}" disabled>
         </div>
 
     </form>
