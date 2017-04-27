@@ -6,16 +6,6 @@ import {User} from '../_models/user';
 @Injectable()
 export class UserService {
 
-    // private helper methods
-    private static jwt() {
-        // create authorization header with jwt token
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            const headers = new Headers({'Authorization': 'Bearer ' + currentUser.token});
-            return new RequestOptions({headers: headers});
-        }
-    }
-
     constructor(private http: Http) {
     }
 
@@ -32,13 +22,21 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user, UserService.jwt()).map((response: Response) => response.json());
+        return this.http.post('/api/users/' + user, UserService.jwt()).map((response: Response) => response.json());
     }
 
-    // No need to delete users since they will be added beforehand.
-    // delete(id: number) {
-    //     return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-    // }
+    // Design sheet calls for people to be able to delete themselves.
+    delete(id: number) {
+         return this.http.delete('/api/users/' + id, UserService.jwt()).map((response: Response) => response.json());
+    }
 
-
+    // private helper methods
+    private static jwt() {
+        // create authorization header with jwt token
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            const headers = new Headers({'Authorization': 'Bearer ' + currentUser.token});
+            return new RequestOptions({headers: headers});
+        }
+    }
 }

@@ -11,6 +11,7 @@ import {
     RequestOptions
 } from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
+import {User} from '../_models/user';
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
     // array in local storage for registered users
@@ -113,33 +114,66 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 return;
             }
 
-            // Since each user will be added beforehand, there is no need to delete users at this point.
+            // update user
+            if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Put) {
+
+                if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    // find user by id in users array
+                    const urlParts = connection.request.url.split('/');
+                    const id = parseInt(urlParts[urlParts.length - 1], 10);
+                    for (let i = 0; i < users.length; i++) {
+                        const user = users[i];
+                        if (user.id === id) {
+                            // update user
+
+                            // get new user object from post body
+                            const newUser = JSON.parse(connection.request.getBody());
+
+                            newUser.id = user.id;
+
+                            users.push(newUser);
+
+                            users.splice(i, 1);
+                            localStorage.setItem('users', JSON.stringify(users));
+                            break;
+                        }
+                    }
+                }
+
+                localStorage.setItem('users', JSON.stringify(users));
+
+                // respond 200 OK
+                connection.mockRespond(new Response(new ResponseOptions({status: 200})));
+
+                return;
+            }
+
             // delete user
-            // if (connection.request.url.match(/\/api\/users\/\d+$/) && connection.request.method === RequestMethod.Delete) {
-            //     // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
-            //     if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            //         // find user by id in users array
-            //         let urlParts = connection.request.url.split('/');
-            //         let id = parseInt(urlParts[urlParts.length - 1]);
-            //         for (let i = 0; i < users.length; i++) {
-            //             let user = users[i];
-            //             if (user.id === id) {
-            //                 // delete user
-            //                 users.splice(i, 1);
-            //                 localStorage.setItem('users', JSON.stringify(users));
-            //                 break;
-            //             }
-            //         }
-            //
-            //         // respond 200 OK
-            //         connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
-            //     } else {
-            //         // return 401 not authorised if token is null or invalid
-            //         connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
-            //     }
-            //
-            //     return;
-            // }
+            if (connection.request.url.match(/\/api\/users\/\d+$/) && connection.request.method === RequestMethod.Delete) {
+                // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
+                if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    // find user by id in users array
+                    const urlParts = connection.request.url.split('/');
+                    const id = parseInt(urlParts[urlParts.length - 1], 10);
+                    for (let i = 0; i < users.length; i++) {
+                        const user = users[i];
+                        if (user.id === id) {
+                            // delete user
+                            users.splice(i, 1);
+                            localStorage.setItem('users', JSON.stringify(users));
+                            break;
+                        }
+                    }
+
+                    // respond 200 OK
+                    connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
+                } else {
+                    // return 401 not authorised if token is null or invalid
+                    connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
+                }
+
+                return;
+            }
 
             // pass through any requests not handled above
             const realHttp = new Http(realBackend, options);
