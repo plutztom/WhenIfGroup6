@@ -5,14 +5,16 @@ class Course:
     quarters = []
     dormant = False
     prereqs = []
+    online = True
 
-    def __init__(self,name,tag,peoplesoft,quarters,dormant,prereqs):
+    def __init__(self,name,tag,peoplesoft,online,quarters,prereqs):
         self.name = name
         self.tag = tag
         self.peoplesoft = peoplesoft
         self.quarters = quarters
-        self.dormant = dormant
         self.prereqs = prereqs
+        self.online = online
+
 
     def getName(self):
         return self.name
