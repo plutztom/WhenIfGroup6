@@ -23,15 +23,17 @@
         <div class="col-12 col-md-auto">
             <h1>Hi {{currentUser.fullName}}!</h1>
             <p>You're logged in!!</p>
-            <!--<p>Admin Status: {{currentUser.isAdmin}}</p>-->
-            <p *ngIf="showAdmin == true">and you're an admin as well!</p>
+            <p *ngIf="currentUser.isAdvisor == true">and you're an advisor as well!</p>
             <h3>All registered users:</h3>
+            <!--<p>Users: {{}}</p>-->
             <ul>
                 <li *ngFor="let user of users">
                     {{user.username}} ({{user.fullName}} {{user.depaulID}})
-                    <!-- - <a (click)="deleteUser(user.id)">Delete</a>-->
                 </li>
             </ul>
+
+            <ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>
+
         </div>
     </div>
 </div>

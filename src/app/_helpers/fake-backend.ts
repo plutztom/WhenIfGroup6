@@ -43,7 +43,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             fullName: user.fullName,
                             email: user.email,
                             depaulID: user.depaulID,
-                            isAdmin: user.isAdmin,
+                            isAdvisor: user.isAdvisor,
                             token: 'fake-jwt-token'
                         }
                     })));

@@ -3,7 +3,7 @@ export class User {
     fullName:   string;
     depaulID:   number;
     email:      string;
-    isAdmin:    boolean;
+    isAdvisor = false;
     username:   string;
     password:   string;
 }

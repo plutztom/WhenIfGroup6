@@ -17,9 +17,9 @@
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-            <label for="is-admin">DePaul ID</label>
-            <input type="checkbox" class="form-control" id="is-admin" [(ngModel)]="model.isAdmin" name="isAdmin"
-                   (ngModelChange)="onChange(model.isAdmin)" #isAdmin="ngModel"/>
+            <label for="is-advisor">Are you an advisor?</label>
+            <input type="checkbox" class="form-control" id="is-advisor" [(ngModel)]="model.isAdvisor" name="isAdvisor"
+                   (ngModelChange)="onChange(model.isAdvisor)" #isAdmin="ngModel"/>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
