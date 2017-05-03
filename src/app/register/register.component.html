@@ -1,51 +1,82 @@
 <div class="container">
     <h1>Register</h1>
 
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fullName.valid }">
-            <label for="full-name">Full Name</label>
-            <input type="text" class="form-control" id="full-name" [(ngModel)]="model.fullName" name="fullname" #fullName="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !fullName.valid" class="help-block">Full Name is required</div>
-        </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !depaulID.valid }">
-            <label for="id-number">DePaul ID</label>
-            <input type="number" class="form-control" id="id-number" [(ngModel)]="model.depaulID" name="depaulID" #depaulID="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !depaulID.valid" class="help-block">DePaul ID number is required</div>
-        </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-            <label for="is-advisor">Are you an advisor?</label>
-            <input type="checkbox" class="form-control" id="is-advisor" [(ngModel)]="model.isAdvisor" name="isAdvisor"
-                   (ngModelChange)="onChange(model.isAdvisor)" #isAdmin="ngModel"/>
-        </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="email">Email Address</label>
-            <input type="text" class="form-control" id="email" [(ngModel)]="model.email" name="email" #email="ngModel" required/>
-            <div *ngIf="f.submitted && !email.valid" class="help-block">Email Address is required</div>
-        </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" [(ngModel)]="model.username" name="username" #username="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-        </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" #password="ngModel"
-                   required/>
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
 
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Register</button>
-            <img *ngIf="loading"
-                 src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+            <label for="full-name">Full Name</label>
+            <input type="text" class="form-control" name="fullname" id="full-name"
+                   [(ngModel)]="model.fullName" required #fullName="ngModel"/>
+            <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger">
+                Name is required.
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="id-number">DePaul ID</label>
+            <input type="number" class="form-control" name="depaulID" id="id-number"
+                   [(ngModel)]="model.depaulID" required #depaulID="ngModel"  minlength="7" maxlength="7"/>
+            <div [hidden]="depaulID.valid || depaulID.pristine" class="alert alert-danger">
+                DePaul ID Number Required. The number should be 7 digits.
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="is-advisor">Are you an advisor?</label>
+            <input type="checkbox" class="form-control" name="isAdvisor" id="is-advisor"
+                   [(ngModel)]="model.isAdvisor" (ngModelChange)="onChange(model.isAdvisor)" #isAdmin="ngModel"/>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email"
+                   [(ngModel)]="model.email" required #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Email is required and format should be <i>john@doe.com</i>.
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username"
+                   [(ngModel)]="model.username" required #username="ngModel" minlength="5"/>
+            <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                Username is required and must be more than 4 characters.
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password"
+                   [(ngModel)]="model.password" required #password="ngModel">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required.
+            </div>
+        </div>
+
+        <!--TODO: Implement password check for accuracy-->
+        <!--<div class="form-group">-->
+            <!--<label for="confirmPassword">Retype password</label>-->
+            <!--<input type="password" class="form-control" name="confirmPassword" id="confirmPassword"-->
+                   <!--[(ngModel)]="model.confirmPassword" required validateEqual="password" #confirmPassword="ngModel">-->
+            <!--<div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">-->
+                <!--Passwords do not match-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid">Register</button>
+
             <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
         </div>
     </form>
