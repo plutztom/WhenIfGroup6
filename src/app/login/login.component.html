@@ -6,11 +6,11 @@
 </md-toolbar>
 
 <div class="flexbox-parent">
-    <div fxLayout="row" fxLayoutAlign="center center" style="min-height: 500px">
-        <div class="col-6" flex="15">
+    <div fxLayout="row justify-content-center" fxLayoutAlign="center center" style="min-height: 500px">
+        <div class="col-sm-6 col-xl-4" flex="15">
             <md-card class="flex-item">
                 <md-card-header>
-                    <h2>Login</h2>
+                    <h2 class="header-name">Login</h2>
                 </md-card-header>
                 <md-card-content>
                     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
