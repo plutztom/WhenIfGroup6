@@ -7,13 +7,28 @@ import { UserService } from '../_services/user.service';
 @Component({
     moduleId: module.id,
     templateUrl: 'register.component.html',
-    styleUrls: ['register.component.css']
+    styleUrls: ['register.component.scss']
 })
 
 // TODO: Check if DePaul ID is already in the database.
 export class RegisterComponent {
     model: any = {};
     loading = false;
+    genderType: string;
+
+    genderTypes = [
+        'Male',
+        'Female',
+        'Other',
+        'Prefer not to say',
+    ];
+
+    personType: string;
+
+    personTypes = [
+        'Student',
+        'Advisor',
+    ];
 
     constructor(private router: Router,
                 private userService: UserService,

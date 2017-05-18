@@ -22,7 +22,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule, MdNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -49,7 +48,6 @@ import 'hammerjs';
         LoginComponent,
         RegisterComponent,
         AccountComponent,
-        NavbarComponent,
     ],
     providers: [
         AuthGuard,

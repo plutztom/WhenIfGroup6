@@ -22,10 +22,25 @@
                         <!--<md-hint align="end">{{depaulID.value.length}} / 7</md-hint>-->
                     </md-input-container>
 
+                    <div class="example-selected-value">Please state your gender:</div>
+                    <md-radio-group class="example-radio-group" [(ngModel)]="genderType">
+                        <md-radio-button class="example-radio-button" *ngFor="let genderType of genderTypes" [value]="genderType">
+                            {{genderType}}
+                        </md-radio-button>
+                    </md-radio-group>
+
                     <!--<md-input-container class="col-sm-10">-->
                         <!--<md-checkbox id="is-advisor"-->
                         <!--[(ngModel)]="model.isAdvisor" #isAdvisor="ngModel">Is Advisor?</md-checkbox>-->
                     <!--</md-input-container>-->
+
+                    <div class="example-selected-value">Are you a:</div>
+                    <md-radio-group class="example-radio-group" [(ngModel)]="personType">
+                        <md-radio-button class="example-radio-button" *ngFor="let personType of personTypes" [value]="personType">
+                            {{personType}}
+                        </md-radio-button>
+                    </md-radio-group>
+
 
                     <md-input-container class="col-sm-11">
                         <input mdInput [mdDatepicker]="picker" placeholder="Date of Birth">

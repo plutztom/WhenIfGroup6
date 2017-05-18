@@ -8,7 +8,8 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+    styleUrls: ['home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
