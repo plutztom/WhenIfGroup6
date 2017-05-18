@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {AlertService} from '../_services/alert.service';
-import {UserService} from '../_services/user.service';
+import { AlertService } from '../_services/alert.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
     moduleId: module.id,
@@ -10,6 +10,7 @@ import {UserService} from '../_services/user.service';
     styleUrls: ['register.component.css']
 })
 
+// TODO: Check if DePaul ID is already in the database.
 export class RegisterComponent {
     model: any = {};
     loading = false;

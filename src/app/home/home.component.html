@@ -1,39 +1,63 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">When If?</a>
+<md-toolbar color="primary">
+    <span [routerLink]="['/']">When If?</span>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <div ngbDropdown>
-            <button class="btn btn-outline-primary" id="dropdownConfig" ngbDropdownToggle>Account</button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownConfig">
-                <a [routerLink]="['/account']" class="dropdown-item">My Account</a>
-                <div class="dropdown-divider"></div>
-                <a [routerLink]="['/login']" class="dropdown-item text-danger">Logout</a>
-            </div>
-        </div>
-    </div>
-</nav>
+    <span class="spacer"></span>
+    <button md-button [routerLink]="['/account']">MY ACCOUNT</button>
+    <button md-raised-button color="warn" [routerLink]="['/login']">LOGOUT</button>
+</md-toolbar>
 
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-12 col-md-auto">
-            <h1>Hi {{currentUser.fullName}}!</h1>
-            <p>You're logged in!!</p>
-            <p *ngIf="currentUser.isAdvisor == true">and you're an advisor as well!</p>
-            <h3>All registered users:</h3>
-            <!--<p>Users: {{}}</p>-->
-            <ul>
-                <li *ngFor="let user of users">
-                    {{user.username}} ({{user.fullName}} {{user.depaulID}})
-                </li>
-            </ul>
+<!--<div class="container body">-->
+    <!--<div class="row justify-content-md-center">-->
+        <!--<div class="col-12">-->
+            <!--<h1>Hi {{currentUser.fullName}}!</h1>-->
+            <!--<div class="jumbotron">-->
+                <!--<p class="lead">When would I finish, if...</p>-->
+                <!--<hr class="my-4">-->
+                <!--<form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>-->
+                <!--<div class="form-group row">-->
+                    <!--<label for="start-date" class="col-sm-2 col-form-label">If I started classes on </label>-->
+                    <!--<div class="col-sm-10">-->
+                        <!--<input type="date" class="form-control" name="startDate" id="start-date"-->
+                               <!--[(ngModel)]="whenParams.startDate" #startDate="ngModel" required/>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-            <ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>
+                <!--<div class="form-group row">-->
+                    <!--<label for="will-work" class="col-sm-2 col-form-label">If I'm working?</label>-->
+                    <!--<div class="col-sm-10">-->
+                        <!--<input type="checkbox" name="willWork" id="will-work" [checked]="setWorking()"-->
+                               <!--[(ngModel)]="whenParams.working" #isAdvisor="ngModel">-->
+                    <!--</div>-->
+                <!--</div>-->
 
-        </div>
-    </div>
-</div>
+                <!--<div class="form-group row">-->
+                    <!--<label class="mr-sm-3" for="classes-per-quarter">If I take no more than</label>-->
+                    <!--<select class="custom-select mb-3 mr-sm-3 mb-sm-0" id="classes-per-quarter" [(ngModel)]="whenParams.classesPerQuarter" name="classesPerQuarter">-->
+                        <!--<option selected>Choose...</option>-->
+                        <!--<option value="1">One</option>-->
+                        <!--<option value="2">Two</option>-->
+                        <!--<option value="3">Three</option>-->
+                    <!--</select>-->
+                    <!--<label for="classes-per-quarter" class="mr-sm-3">Classes per quarter?</label>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!--</div>-->
+
+            <!--<div *ngIf="!showAdvisor()">-->
+                <!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
+            <!--</div>-->
+
+            <!--<div *ngIf="showAdvisor() == true">-->
+                <!--<h3>All registered users:</h3>-->
+
+                <!--<ul>-->
+                    <!--<li *ngFor="let user of users">-->
+                        <!--{{user.username}} ({{user.fullName}} {{user.depaulID}})-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+                <!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

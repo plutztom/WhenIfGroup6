@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {User} from '../_models/user';
-import {UserService} from '../_services/user.service';
+import { User } from '../_models/user';
+import { Class } from '../_models/class'
+import { When } from '../_models/when'
+import { UserService } from '../_services/user.service';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -14,6 +16,9 @@ export class HomeComponent implements OnInit {
     users: User[] = [];
     isAdvisor: boolean;
     source: LocalDataSource;
+    working = false;
+    whenParams: When;
+    classesArray:Array<string> = ['1', '2', '3'];
 
     settings = {
         columns: {
@@ -49,12 +54,21 @@ export class HomeComponent implements OnInit {
         this.loadAllUsers();
     }
 
-    showAdvisor() {
-        return this.isAdvisor;
+    // TODO: Implement WhenIf calculations once the backend is completed.
+    whenIf() {
+
     }
 
-    private showAll() {
-        this.userService.getAll();
+    showAdvisor() {
+        return this.currentUser.isAdvisor;
+    }
+
+    setWorking() {
+        this.working = true;
+    }
+
+    isWorking() {
+        return this.working;
     }
 
     private loadAllUsers() {

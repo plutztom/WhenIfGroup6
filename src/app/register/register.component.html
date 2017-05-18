@@ -1,82 +1,67 @@
-<div class="container">
-    <h1>Register</h1>
+<md-toolbar color="primary">
+    <span [routerLink]="['/']">When If?</span>
+</md-toolbar>
 
-    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
+<div class="body container">
+    <div class="row justify-content-md-center">
+        <md-card class="register-card row col-sm-9">
+            <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
+                <md-card-header>
+                    <h1>Register</h1>
+                </md-card-header>
+                <md-card-content>
+                    <md-input-container class="col-sm-11">
+                        <input mdInput placeholder="Full Name" type="text" class="form-control"
+                               name="fullname" id="full-name" [(ngModel)]="model.fullName" required #fullName="ngModel"/>
+                    </md-input-container>
 
-        <div class="form-group">
-            <label for="full-name">Full Name</label>
-            <input type="text" class="form-control" name="fullname" id="full-name"
-                   [(ngModel)]="model.fullName" required #fullName="ngModel"/>
-            <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger">
-                Name is required.
-            </div>
-        </div>
+                    <md-input-container class="col-sm-11">
+                        <input mdInput placeholder="DePaul ID" type="number" class="form-control"
+                               name="depaulID" id="id-number" [(ngModel)]="model.depaulID"
+                               required #depaulID="ngModel" maxlength='7'/>
+                        <!--<md-hint align="end">{{depaulID.value.length}} / 7</md-hint>-->
+                    </md-input-container>
 
+                    <!--<md-input-container class="col-sm-10">-->
+                        <!--<md-checkbox id="is-advisor"-->
+                        <!--[(ngModel)]="model.isAdvisor" #isAdvisor="ngModel">Is Advisor?</md-checkbox>-->
+                    <!--</md-input-container>-->
 
+                    <md-input-container class="col-sm-11">
+                        <input mdInput [mdDatepicker]="picker" placeholder="Date of Birth">
+                        <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                    </md-input-container>
+                    <md-datepicker #picker></md-datepicker>
 
-        <div class="form-group">
-            <label for="id-number">DePaul ID</label>
-            <input type="number" class="form-control" name="depaulID" id="id-number"
-                   [(ngModel)]="model.depaulID" required #depaulID="ngModel"  minlength="7" maxlength="7"/>
-            <div [hidden]="depaulID.valid || depaulID.pristine" class="alert alert-danger">
-                DePaul ID Number Required. The number should be 7 digits.
-            </div>
-        </div>
+                    <md-input-container class="col-sm-11">
+                        <input mdInput placeholder="Phone Number" type="number" class="form-control"
+                               name="phone" id="phone-number"
+                               [(ngModel)]="model.phone" required #phoneNumber="ngModel"  minlength="10" maxlength="11"/>
+                    </md-input-container>
 
+                    <md-input-container class="col-sm-11">
+                        <input mdInput placeholder="Email Address" type="email" class="form-control"
+                               name="email" id="email" [(ngModel)]="model.email" required
+                               #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+                    </md-input-container>
 
-        <div class="form-group">
-            <label for="is-advisor">
-                <input type="checkbox" name="isActive" id="is-advisor" [(ngModel)]="model.isAdvisor" #isAdvisor="ngModel">
-                Are you an Advisor?
-            </label>
-        </div>
+                    <md-input-container class="col-sm-11">
+                        <input mdInput placeholder="Username" type="text" class="form-control" name="username" id="username"
+                               [(ngModel)]="model.username" required #username="ngModel" minlength="5"/>
+                    </md-input-container>
 
+                    <md-input-container class="col-sm-11">
+                        <input mdInput placeholder="Password" type="password" class="form-control"
+                               name="password" id="password"
+                               [(ngModel)]="model.password" required #password="ngModel">
+                    </md-input-container>
+                </md-card-content>
+                <md-card-actions>
+                    <button md-raised-button color="primary" type="submit" [disabled]="!f.form.valid">Register</button>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email"
-                   [(ngModel)]="model.email" required #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                Email is required and format should be <i>john@doe.com</i>.
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" id="username"
-                   [(ngModel)]="model.username" required #username="ngModel" minlength="5"/>
-            <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
-                Username is required and must be more than 4 characters.
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password"
-                   [(ngModel)]="model.password" required #password="ngModel">
-            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                Password is required.
-            </div>
-        </div>
-
-        <!--TODO: Implement password check for accuracy-->
-        <!--<div class="form-group">-->
-            <!--<label for="confirmPassword">Retype password</label>-->
-            <!--<input type="password" class="form-control" name="confirmPassword" id="confirmPassword"-->
-                   <!--[(ngModel)]="model.confirmPassword" required validateEqual="password" #confirmPassword="ngModel">-->
-            <!--<div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">-->
-                <!--Passwords do not match-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid">Register</button>
-
-            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
-        </div>
-    </form>
+                    <button md-button [routerLink]="['/login']">Cancel</button>
+                </md-card-actions>
+            </form>
+        </md-card>
+    </div>
 </div>

@@ -14,6 +14,12 @@ export class LoginComponent implements OnInit {
     loading = false;
     returnUrl: string;
 
+    isIn = false;   // store state
+    toggleState() { // click handler
+        const bool = this.isIn;
+        this.isIn = bool === false;
+    }
+
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private authenticationService: AuthenticationService,
