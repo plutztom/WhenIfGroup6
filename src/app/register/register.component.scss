@@ -1,14 +1,19 @@
-.body {
-    padding-top: 15px;
-}
-
 .spacer {
     flex: 1 1 auto;
 }
 
-/*.ng-valid[required], .ng-valid.required  {*/
-/*border-left: 5px solid #42A948; !* green *!*/
-/*}*/
-/*.ng-invalid:not(form)  {*/
-/*border-left: 5px solid #a94442; !* red *!*/
-/*}*/
+.radio-group {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.radio-button {
+    margin: 5px;
+    padding-right: 15px;
+}
+
+.selected-value {
+    padding-right: 15px;
+    margin: 15px 0;
+}
+

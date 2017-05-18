@@ -26,8 +26,8 @@ export class RegisterComponent {
     personType: string;
 
     personTypes = [
-        'Student',
-        'Advisor',
+        'Student?',
+        'Advisor?',
     ];
 
     constructor(private router: Router,

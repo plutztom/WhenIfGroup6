@@ -8,6 +8,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -38,7 +39,8 @@ import 'hammerjs';
         Ng2SmartTableModule,
         MaterialModule,
         BrowserAnimationsModule,
-        MdNativeDateModule
+        MdNativeDateModule,
+        FlexLayoutModule
     ],
 
     declarations: [
