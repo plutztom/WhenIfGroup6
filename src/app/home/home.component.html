@@ -17,11 +17,17 @@
                 </md-card-header>
                 <md-card-content>
                     <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>
-                        <md-input-container>
-                            <input mdInput [mdDatepicker]="myDatepicker">
-                            <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
-                        </md-input-container>
-                        <md-datepicker #myDatepicker></md-datepicker>
+                        <label>If I start in...</label>
+                        <md-select placeholder="Quarter" [(ngModel)]="selectedValue" name="quarter">
+                            <md-option *ngFor="let quarter of quarters" [value]="quarter.value">
+                                {{quarter.viewValue}}
+                            </md-option>
+                        </md-select>
+                        <md-select placeholder="Year" [(ngModel)]="selectedValue" name="year">
+                            <md-option *ngFor="let year of years" [value]="year">
+                                {{year}}
+                            </md-option>
+                        </md-select>
 
                     </form>
                 </md-card-content>
@@ -39,17 +45,6 @@
     <!--<div class="row justify-content-md-center">-->
         <!--<div class="col-12">-->
             <!--<div class="jumbotron">-->
-                <!--<p class="lead">When would I finish, if...</p>-->
-                <!--<hr class="my-4">-->
-                <!--<form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>-->
-                <!--<div class="form-group row">-->
-                    <!--<label for="start-date" class="col-sm-2 col-form-label">If I started classes on </label>-->
-                    <!--<div class="col-sm-10">-->
-                        <!--<input type="date" class="form-control" name="startDate" id="start-date"-->
-                               <!--[(ngModel)]="whenParams.startDate" #startDate="ngModel" required/>-->
-                    <!--</div>-->
-                <!--</div>-->
-
                 <!--<div class="form-group row">-->
                     <!--<label for="will-work" class="col-sm-2 col-form-label">If I'm working?</label>-->
                     <!--<div class="col-sm-10">-->
