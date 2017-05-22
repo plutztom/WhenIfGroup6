@@ -1,15 +1,15 @@
 <md-toolbar color="primary">
-    <span>When If?</span>
+    <button md-button [routerLink]="['/']">When If?</button>
 
     <span class="spacer"></span>
     <!--<button md-button [routerLink]="['/account']" disabled>My Account</button>-->
-    <button md-raised-button color="warn" [routerLink]="['/login']">Logout</button>
+    <button md-raised-button color="warn" (click)="click.onLogout()" [routerLink]="['/']">Logout</button>
 
 </md-toolbar>
 
 <div class="flexbox-parent">
-    <div fxLayout="row" fxLayoutAlign="center center" style="min-height: 600px">
-        <div class="col-8" flex="15">
+    <div fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" style="min-height: 600px">
+        <div class="col-8">
             <md-card class="flex-item">
                 <md-card-header>
                     <h2>My Account</h2>
@@ -45,17 +45,18 @@
                 <md-card-actions>
                     <div class="d-flex justify-content-between">
                         <div>
-                            <button color="primary" md-raised-button [disabled]="loading" class="btn btn-primary"
-                                    (click)="update(currentUser.id)">Update</button>
+                            <button color="primary" md-raised-button [disabled]="loading" class="btn btn-primary" (click)="update(currentUser.id)">Update</button>
                             <button md-button [routerLink]="['/']" class="btn btn-link">Back</button>
-
                         </div>
                         <div>
-                            <button color="warn" md-raised-button class="btn btn-danger"
-                                    (click)="deleteUser(currentUser.id)"><span class="pull-right">Delete Yourself</span></button>
+                            <button color="warn" md-raised-button class="btn btn-danger" (click)="deleteUser(currentUser.id)"><span class="pull-right">Delete Myself</span></button>
+                            <button color="warn" md-raised-button class="btn btn-danger" (click)="openDialog()"><span class="pull-right">Delete Myself</span></button>
                         </div>
                     </div>
                 </md-card-actions>
+                <md-card-footer>
+
+                </md-card-footer>
             </md-card>
         </div>
     </div>

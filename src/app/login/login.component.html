@@ -1,42 +1,41 @@
 <md-toolbar color="primary">
-    <span [routerLink]="['/']">When If?</span>
+    <button md-button [routerLink]="['/']">When If?</button>
 
     <span class="spacer"></span>
     <button md-button [routerLink]="['/register']">REGISTER</button>
 </md-toolbar>
 
 <div class="flexbox-parent">
-    <div fxLayout="row justify-content-center" fxLayoutAlign="center center" style="min-height: 500px">
-        <div class="col-sm-6 col-xl-4" flex="15">
+    <div fxLayout.gt-sm="row" fxLayoutAlign="center center" style="min-height: 700px">
+        <div class="col-lg-4" fxFlex.lt-md="<shrink>">
             <md-card class="flex-item">
-                <md-card-header>
-                    <h2 class="header-name">Login</h2>
-                </md-card-header>
-                <md-card-content>
-                    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                    <md-card-header>
+                        <h2 class="header-name">Login</h2>
+                    </md-card-header>
+                    <md-card-content>
                         <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !username.valid}">
                             <md-input-container class="col-11">
-                                <input mdInput placeholder="Username" name="username" type="text"
-                                       class="form-control" [(ngModel)]="model.username"
-                                       #username="ngModel" id="username" required/>
+                                <input mdInput placeholder="Username" name="username" type="text" class="form-control"
+                                       [(ngModel)]="model.username" #username="ngModel" id="username" required/>
+                                <md-error *ngIf="f.submitted && !username.valid">Enter your username</md-error>
                             </md-input-container>
-                            <div *ngIf="f.submitted && !username.valid" class="help-block">Username or Email
-                                Address is required
-                            </div>
                         </div>
                         <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
                             <md-input-container class="col-11">
-                                <input mdInput placeholder="Password" name="password" type="password" class="form-control"
-                                       [(ngModel)]="model.password" #password="ngModel" id="password" required/>
+                                <input mdInput placeholder="Password" name="password" type="password"
+                                       class="form-control" [(ngModel)]="model.password" #password="ngModel"
+                                       id="password" required/>
+                                <md-error *ngIf="f.submitted && !password.valid">Enter your password</md-error>
                             </md-input-container>
-                            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
                         </div>
+                    </md-card-content>
+                    <md-card-actions>
                         <div class="form-group">
-                            <button color="primary" class="btn btn-primary" md-raised-button
-                                    [disabled]="!f.form.valid">Login</button>
+                            <button md-raised-button color="primary" class="btn btn-primary">Login</button>
                         </div>
-                    </form>
-                </md-card-content>
+                    </md-card-actions>
+                </form>
             </md-card>
         </div>
     </div>

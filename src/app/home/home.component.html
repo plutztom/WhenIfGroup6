@@ -1,15 +1,43 @@
 <md-toolbar color="primary">
-    <span [routerLink]="['/']">When If?</span>
+    <button md-button [routerLink]="['/']">When If?</button>
 
     <span class="spacer"></span>
-    <button md-button [routerLink]="['/account']">MY ACCOUNT</button>
-    <button md-raised-button color="warn" [routerLink]="['/login']">LOGOUT</button>
+    <button md-button [routerLink]="['/account']">My Account</button>
+    <button md-raised-button color="warn" [routerLink]="['/login']">Logout</button>
 </md-toolbar>
+
+<div class="container flexbox-parent">
+    <div fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" style="min-height: 600px">
+        <div class="col-8">
+            <h1>Welcome, {{currentUser.fullName}}</h1>
+
+            <md-card class="flex-item">
+                <md-card-header>
+                    <h2>When would I finish, if...</h2>
+                </md-card-header>
+                <md-card-content>
+                    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>
+                        <md-input-container>
+                            <input mdInput [mdDatepicker]="myDatepicker">
+                            <button mdSuffix [mdDatepickerToggle]="myDatepicker"></button>
+                        </md-input-container>
+                        <md-datepicker #myDatepicker></md-datepicker>
+
+                    </form>
+                </md-card-content>
+                <md-card-actions>
+
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+</div>
+
+
 
 <!--<div class="container body">-->
     <!--<div class="row justify-content-md-center">-->
         <!--<div class="col-12">-->
-            <!--<h1>Hi {{currentUser.fullName}}!</h1>-->
             <!--<div class="jumbotron">-->
                 <!--<p class="lead">When would I finish, if...</p>-->
                 <!--<hr class="my-4">-->

@@ -15,16 +15,13 @@ export class RegisterComponent {
     model: any = {};
     loading = false;
     genderType: string;
-
     genderTypes = [
         'Male',
         'Female',
         'Other',
-        'Prefer not to say',
+        'Rather not say',
     ];
-
     personType: string;
-
     personTypes = [
         'Student?',
         'Advisor?',

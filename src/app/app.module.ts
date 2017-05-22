@@ -51,6 +51,9 @@ import 'hammerjs';
         RegisterComponent,
         AccountComponent,
     ],
+    entryComponents: [
+        AppComponent,
+    ],
     providers: [
         AuthGuard,
         AlertService,

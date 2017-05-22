@@ -87,7 +87,7 @@
         "component-selector": [
             true,
             "element",
-            "app",
+            "when-if",
             "kebab-case"
         ],
         "use-input-property-decorator": true,

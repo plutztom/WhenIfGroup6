@@ -3,20 +3,30 @@ import {User} from '../_models/user';
 import {UserService} from '../_services/user.service';
 import {Router} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
+import { Click } from '../click';
+import { MdDialogRef, MdDialog } from '@angular/material';
 
 @Component({
-    selector: 'app-account',
+    selector: 'when-if-account',
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
     currentUser: User;
-    loading = false;
-
+    click: Click;
+    delete? = false;
     constructor(private userService: UserService,
                 private router: Router,
-                private alertService: AlertService) {
+                private alertService: AlertService,
+                public dialog: MdDialog) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(DeleteDialogComponent);
+        dialogRef.afterClosed().subscribe(result => {
+            this.delete = result;
+        });
     }
 
     deleteUser(id: number) {
@@ -36,7 +46,6 @@ export class AccountComponent implements OnInit {
     }
 
     update() {
-        this.loading = true;
         this.userService.update(this.currentUser)
             .subscribe(
                 data => {
@@ -45,8 +54,14 @@ export class AccountComponent implements OnInit {
                 },
                 error => {
                     this.alertService.error(error);
-                    this.loading = false;
                 });
     }
+}
 
+Component({
+    selector: 'when-if-delete-dialog',
+    templateUrl: './when-if-delete-dialog.html'
+})
+export class DeleteDialogComponent {
+    constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>) {}
 }

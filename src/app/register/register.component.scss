@@ -1,19 +1,36 @@
+$break-small: 575px;
+
 .spacer {
     flex: 1 1 auto;
 }
 
+.header-name {
+    font-weight: 300;
+}
+
+md-card-header {
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
 .radio-group {
-    display: inline-flex;
-    flex-direction: row;
+    @media screen and (min-width: $break-small) {
+        display: inline-flex;
+        flex-direction: row;
+    }
+    @media screen and (max-width: $break-small){
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .radio-button {
-    margin: 5px;
-    padding-right: 15px;
+    margin-right: 15px;
+    padding-left: 15px;
 }
 
 .selected-value {
-    padding-right: 15px;
+    padding-left: 15px;
     margin: 15px 0;
 }
 
