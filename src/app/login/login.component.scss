@@ -19,7 +19,10 @@ md-card-header {
 }
 
 md-card-actions {
-    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: auto;
+
     padding-top: 50px;
     padding-bottom: 25px;
 }

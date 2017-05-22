@@ -21,16 +21,21 @@ export class HomeComponent implements OnInit {
     whenParams: When;
     classesArray:Array<string> = ['1', '2', '3'];
     quarters = [
-        {value: 'fall', viewValue: 'Fall'},
-        {value: 'winter', viewValue: 'Winter'},
-        {value: 'spring', viewValue: 'Spring'},
-        {value: 'summer', viewValue: 'Summer'},
+        'Fall',
+        'Winter',
+        'Spring',
     ];
     years = [
         '2017',
         '2018',
         '2019',
         '2020',
+    ];
+    numbers = [
+        'One',
+        'Two',
+        'Three',
+        'Four',
     ];
 
     settings = {

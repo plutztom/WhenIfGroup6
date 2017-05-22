@@ -7,64 +7,61 @@
 </md-toolbar>
 
 <div class="container flexbox-parent">
-    <div fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" style="min-height: 600px">
-        <div class="col-8">
+    <div fxLayout="column" fxLayoutAlign="space-around center" style="min-height: 600px">
+        <div class="main">
             <h1>Welcome, {{currentUser.fullName}}</h1>
-
+        </div>
+        <div class="main col-8">
             <md-card class="flex-item">
                 <md-card-header>
-                    <h2>When would I finish, if...</h2>
+                    <h3>When would I finish, if...</h3>
                 </md-card-header>
+                <hr>
                 <md-card-content>
                     <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>
-                        <label>If I start in...</label>
-                        <md-select placeholder="Quarter" [(ngModel)]="selectedValue" name="quarter">
-                            <md-option *ngFor="let quarter of quarters" [value]="quarter.value">
-                                {{quarter.viewValue}}
-                            </md-option>
-                        </md-select>
-                        <md-select placeholder="Year" [(ngModel)]="selectedValue" name="year">
-                            <md-option *ngFor="let year of years" [value]="year">
-                                {{year}}
-                            </md-option>
-                        </md-select>
+                        <div class="row">
+                            <label for="quarter">I start in</label>
+                            <md-select placeholder="Quarter" [(ngModel)]="quarterValue" name="quarter">
+                                <md-option *ngFor="let quarter of quarters" [value]="quarter">
+                                    {{quarter}}
+                                </md-option>
+                            </md-select>
 
+                            <md-select placeholder="Year" [(ngModel)]="yearValue" name="year">
+                                <md-option *ngFor="let year of years" [value]="year">
+                                    {{year}}
+                                </md-option>
+                            </md-select>
+                            <label for="year">,</label>
+                        </div>
+                        <div class="row">
+                            <md-checkbox name="isWorking" [(ngModel)]="isWorking"
+                                        (change)="onChange" align="end"
+                                        color="primary">
+                                <label for="isWorking">I'm working during school</label>
+                            </md-checkbox>
+                            <label for="isWorking">,</label>
+                        </div>
+                        <div class="row">
+                            <label for="classesPerQuarter">I take no more than</label>
+                            <md-select placeholder="Number of Classes" [(ngModel)]="classesPerQuarter" name="classesPerQuarter">
+                                <md-option *ngFor="let number of numbers" [value]="number">
+                                    {{number}}
+                                </md-option>
+                            </md-select>
+                            <label for="classesPerQuarter">classes per quarter,</label>
+                        </div>
+                        <!-- TODO: Add more options!!! -->
                     </form>
                 </md-card-content>
-                <md-card-actions>
-
+                <md-card-actions>   
+                    <button md-raised-button color="primary" [routerLink]="['/']">{{"When would I finish school?" | uppercase}}</button>
                 </md-card-actions>
+                <md-card-footer>
+                </md-card-footer>
             </md-card>
         </div>
     </div>
-</div>
-
-
-
-<!--<div class="container body">-->
-    <!--<div class="row justify-content-md-center">-->
-        <!--<div class="col-12">-->
-            <!--<div class="jumbotron">-->
-                <!--<div class="form-group row">-->
-                    <!--<label for="will-work" class="col-sm-2 col-form-label">If I'm working?</label>-->
-                    <!--<div class="col-sm-10">-->
-                        <!--<input type="checkbox" name="willWork" id="will-work" [checked]="setWorking()"-->
-                               <!--[(ngModel)]="whenParams.working" #isAdvisor="ngModel">-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="form-group row">-->
-                    <!--<label class="mr-sm-3" for="classes-per-quarter">If I take no more than</label>-->
-                    <!--<select class="custom-select mb-3 mr-sm-3 mb-sm-0" id="classes-per-quarter" [(ngModel)]="whenParams.classesPerQuarter" name="classesPerQuarter">-->
-                        <!--<option selected>Choose...</option>-->
-                        <!--<option value="1">One</option>-->
-                        <!--<option value="2">Two</option>-->
-                        <!--<option value="3">Three</option>-->
-                    <!--</select>-->
-                    <!--<label for="classes-per-quarter" class="mr-sm-3">Classes per quarter?</label>-->
-                <!--</div>-->
-            <!--</form>-->
-            <!--</div>-->
 
             <!--<div *ngIf="!showAdvisor()">-->
                 <!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
