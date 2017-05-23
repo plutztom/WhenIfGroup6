@@ -42,10 +42,19 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             username: user.username,
                             fullName: user.fullName,
                             email: user.email,
-                            depaulID: user.depaulID,
+                            depaulId: user.depaulId,
                             isAdvisor: user.isAdvisor,
+                            startTerm: user.startTerm,
+                            endTerm: user.endTerm,
+                            status: user.status,
+                            phone: user.phone,
                             dateOfBirth: user.dateOfBirth,
-                            
+                            address: user.address,
+                            address2: user.address2,
+                            city: user.city,
+                            state: user.state,
+                            zip: user.zip,
+
                             token: 'fake-jwt-token'
                         }
                     })));

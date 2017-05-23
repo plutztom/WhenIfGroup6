@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from '@angular/http';
 
-import {User} from '../_models/user';
+import { Student } from '../_models/user';
+import { Faculty } from '../_models/user';
 
 @Injectable()
 export class UserService {
@@ -17,11 +18,11 @@ export class UserService {
         return this.http.get('/api/users/' + id, UserService.jwt()).map((response: Response) => response.json());
     }
 
-    create(user: User) {
+    create(user: any) {
         return this.http.post('/api/users', user, UserService.jwt()).map((response: Response) => response.json());
     }
 
-    update(user: User) {
+    update(user: any) {
         return this.http.post('/api/users/' + user, UserService.jwt()).map((response: Response) => response.json());
     }
 

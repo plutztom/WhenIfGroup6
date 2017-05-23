@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 import { AlertService } from '../_services/alert.service';
 import { UserService } from '../_services/user.service';
@@ -14,13 +15,11 @@ import { UserService } from '../_services/user.service';
 export class RegisterComponent {
     model: any = {};
     loading = false;
-    status: string;
     statuses = [
         'Active',
         'Graduated',
         'Frozen',
     ];
-    genderType: string;
     genderTypes = [
         'Male',
         'Female',
@@ -35,7 +34,8 @@ export class RegisterComponent {
 
     constructor(private router: Router,
                 private userService: UserService,
-                private alertService: AlertService) {
+                private alertService: AlertService,
+                public snackBar: MdSnackBar) {
     }
 
     onPersonChange(personType: string) {
@@ -47,16 +47,17 @@ export class RegisterComponent {
     }
 
     register() {
-        this.loading = true;
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.snackBar.open('Registration Successful', 'Dismiss', {
+                        duration: 2000,
+                    });
                 },
                 error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+                    this.snackBar.open('Error: ' + error, 'Dismiss', {
+                        duration: 2000,
+                    });
                 });
     }
 }

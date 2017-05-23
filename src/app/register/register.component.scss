@@ -1,5 +1,4 @@
 $break-small: 575px;
-
 .spacer {
     flex: 1 1 auto;
 }
@@ -22,7 +21,7 @@ md-select {
 }
 
 .full-width {
-  width: 100%;
+    width: 100%;
 }
 
 .radio-group {
@@ -30,7 +29,7 @@ md-select {
         display: inline-flex;
         flex-direction: row;
     }
-    @media screen and (max-width: $break-small){
+    @media screen and (max-width: $break-small) {
         display: flex;
         flex-direction: column;
     }

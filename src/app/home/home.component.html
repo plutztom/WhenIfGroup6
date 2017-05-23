@@ -35,9 +35,7 @@
                             <label for="year">,</label>
                         </div>
                         <div class="row">
-                            <md-checkbox name="isWorking" [(ngModel)]="isWorking"
-                                        (change)="onChange" align="end"
-                                        color="primary">
+                            <md-checkbox name="isWorking" [(ngModel)]="isWorking" (change)="onChange" align="end" color="primary">
                                 <label for="isWorking">I'm working during school</label>
                             </md-checkbox>
                             <label for="isWorking">,</label>
@@ -54,7 +52,7 @@
                         <!-- TODO: Add more options!!! -->
                     </form>
                 </md-card-content>
-                <md-card-actions>   
+                <md-card-actions>
                     <button md-raised-button color="primary" [routerLink]="['/']">{{"When would I finish school?" | uppercase}}</button>
                 </md-card-actions>
                 <md-card-footer>
@@ -62,22 +60,23 @@
             </md-card>
         </div>
     </div>
+</div>
 
-            <!--<div *ngIf="!showAdvisor()">-->
-                <!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
-            <!--</div>-->
+<!--<div *ngIf="!showAdvisor()">-->
+<!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
+<!--</div>-->
 
-            <!--<div *ngIf="showAdvisor() == true">-->
-                <!--<h3>All registered users:</h3>-->
+<!--<div *ngIf="showAdvisor() == true">-->
+<!--<h3>All registered users:</h3>-->
 
-                <!--<ul>-->
-                    <!--<li *ngFor="let user of users">-->
-                        <!--{{user.username}} ({{user.fullName}} {{user.depaulID}})-->
-                    <!--</li>-->
-                <!--</ul>-->
+<!--<ul>-->
+<!--<li *ngFor="let user of users">-->
+<!--{{user.username}} ({{user.fullName}} {{user.depaulID}})-->
+<!--</li>-->
+<!--</ul>-->
 
-                <!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->

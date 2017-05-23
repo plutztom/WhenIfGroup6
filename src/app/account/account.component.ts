@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../_models/user';
+import {User, Student, Faculty} from '../_models/user';
 import {UserService} from '../_services/user.service';
 import {Router} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
@@ -12,9 +12,16 @@ import { MdDialogRef, MdDialog } from '@angular/material';
     styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-    currentUser: User;
+    currentUser: Student | Faculty;
     click: Click;
     delete? = false;
+    status: string;
+    statuses = [
+        'Active',
+        'Graduated',
+        'Frozen',
+    ];
+
     constructor(private userService: UserService,
                 private router: Router,
                 private alertService: AlertService,
@@ -55,6 +62,10 @@ export class AccountComponent implements OnInit {
                 error => {
                     this.alertService.error(error);
                 });
+    }
+
+    checkUser(currentUser) {
+        return typeof currentUser;
     }
 }
 

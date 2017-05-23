@@ -6,11 +6,3 @@ import {User} from './user';
  *
  */
 
-export class Faculty extends User {
-    // TODO: remove 'id' and simply use DePaulID as the ID.
-    id:              number;
-    fullName:        string;
-    depaulID:        number;
-    jobTitle:        string;
-
-}
