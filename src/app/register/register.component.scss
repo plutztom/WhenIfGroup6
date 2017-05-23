@@ -8,9 +8,21 @@ $break-small: 575px;
     font-weight: 300;
 }
 
+label {
+    font-size: 19px;
+}
+
 md-card-header {
     padding-top: 25px;
     padding-bottom: 50px;
+}
+
+md-select {
+    padding: 15px;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .radio-group {
@@ -38,3 +50,14 @@ md-card-header {
     margin-left: 15px;
 }
 
+md-card {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+md-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: auto;
+    // padding-left: 30px;
+}

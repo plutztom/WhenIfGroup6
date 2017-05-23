@@ -14,11 +14,10 @@ export class Student extends User {
     status:          string; // Active, Graduated, or Frozen
     termStart:       Date;
     termEnd?:        Date;
-    dateofBirth:     Date;
+    dateofBirth?:    Date;
     email:           string;
-    phone:           number;
-    address:         string;
+    phone?:          number;
+    address?:        string;
     username:        string;
     password:        string;
-    confirmPassword: string;
 }

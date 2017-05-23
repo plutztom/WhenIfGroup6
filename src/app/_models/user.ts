@@ -7,12 +7,6 @@ export class User {
     depaulID:        number;
     isAdvisor?:      boolean;
 
-    dateofBirth:     Date;
-    email:           string;
-    phone?:          number;
-    address?:        string;
-
     username:        string;
     password:        string;
-    confirmPassword: string;
 }

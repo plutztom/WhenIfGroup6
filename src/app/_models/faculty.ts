@@ -11,6 +11,6 @@ export class Faculty extends User {
     id:              number;
     fullName:        string;
     depaulID:        number;
-    jobTitle:        string; // Active, Graduated, or Frozen
+    jobTitle:        string;
 
 }

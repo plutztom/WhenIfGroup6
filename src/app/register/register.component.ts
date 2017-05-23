@@ -14,6 +14,12 @@ import { UserService } from '../_services/user.service';
 export class RegisterComponent {
     model: any = {};
     loading = false;
+    status: string;
+    statuses = [
+        'Active',
+        'Graduated',
+        'Frozen',
+    ];
     genderType: string;
     genderTypes = [
         'Male',
@@ -23,13 +29,21 @@ export class RegisterComponent {
     ];
     personType: string;
     personTypes = [
-        'Student?',
-        'Advisor?',
+        'Student',
+        'Advisor',
     ];
 
     constructor(private router: Router,
                 private userService: UserService,
                 private alertService: AlertService) {
+    }
+
+    onPersonChange(personType: string) {
+        this.personType = personType;
+    }
+
+    onGenderChange(genderType: string) {
+        return genderType;
     }
 
     register() {
