@@ -26,8 +26,8 @@
                                         it thows an error: "Uncaught (in promise): TypeError: Cannot read property 'length' of null"
                                         In other words, 'depaulID' will not work, but 'depaulId' WILL work!
                                         I may have to file a bug on the Angular GitHub with this one... -->
-                                    <input mdInput #depaulId maxlength="7" placeholder="DePaul ID Number" [(ngModel)]="model.depaulID">
-                                    <md-hint align="end">{{depaulId.value.length}} / 7</md-hint>
+                                    <input mdInput placeholder="DePaul ID" type="number" class="form-control" name="studentId" id="id-number" [(ngModel)]="model.depaulID" required #studentId maxlength='7' />
+                                    <md-hint align="end">{{studentId.value.length}} / 7</md-hint>
                                 </md-input-container>
                                 <div class="full-width">
                                     <label class="label" for="currentStatus">What is your current standing?</label>
@@ -39,7 +39,7 @@
                                     <br>
                                     <label class="label" for="genderType">Please state your gender:</label>
                                     <md-radio-group class="radio-group" [(ngModel)]="model.gender" name="genderType">
-                                        <md-radio-button class="radio-button" *ngFor="let genderType of genderTypes" [value]="genderType" [checked]="idx === 0" (change)="onGenderChange(genderType)">
+                                        <md-radio-button class="radio-button" *ngFor="let genderType of genderTypes" [value]="genderType" (change)="onGenderChange(genderType)">
                                             {{genderType}}
                                         </md-radio-button>
                                     </md-radio-group>
@@ -110,8 +110,8 @@
                                 </md-input-container>
 
                                 <md-input-container class="full-width">
-                                    <input mdInput placeholder="DePaul ID" type="number" class="form-control" name="depaulID" id="id-number" [(ngModel)]="model.depaulID" required #facultyId maxlength='7' />
-                                    <md-hint align="end">{{facultyId.value.length}} / 7</md-hint>
+                                    <input mdInput placeholder="DePaul ID" type="number" class="form-control" name="depaulID" id="id-number" [(ngModel)]="model.depaulID" #studentId maxlength='7' />
+                                    <md-hint align="end">{{studentId.value.length}} / 7</md-hint>
                                 </md-input-container>
                             </md-tab>
                         </md-tab-group>
