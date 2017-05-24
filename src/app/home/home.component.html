@@ -1,6 +1,9 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" layout="row" layout-align="center center">
     <button md-button [routerLink]="['/']">When If?</button>
-
+    <span class="spacer extra-space"></span>
+    <!--<div>-->
+    <!--<i class="material-icons">search</i>-->
+    <input name="search" class="search" [(ngModel)]="search" type="text" placeholder="Search">
     <span class="spacer"></span>
     <button md-button [routerLink]="['/account']">My Account</button>
     <button md-raised-button color="warn" [routerLink]="['/login']">Logout</button>
@@ -53,7 +56,7 @@
                     </form>
                 </md-card-content>
                 <md-card-actions>
-                    <button md-raised-button color="primary" [routerLink]="['/']">{{"When would I finish school?" | uppercase}}</button>
+                    <button md-raised-button color="primary" (click)="whenIf()">{{"When would I finish school?" | uppercase}}</button>
                 </md-card-actions>
                 <md-card-footer>
                 </md-card-footer>

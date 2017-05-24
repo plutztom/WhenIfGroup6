@@ -15,120 +15,70 @@
                     <md-card-header fxLayoutAlign.="center center">
                         <h2 class="header-name">My Account</h2>
                     </md-card-header>
-                    <!-- TODO: User has child interfaces Faculty and Student, which each have different variables that are needed for each.
-                         TODO: An issue comes up that JavaScript cannot overload functions (see: https://stackoverflow.com/questions/13212625/typescript-function-overloading).
-                         TODO: Because of this, TypeScript has 'Unions' that can be used for similar functions (see: https://stackoverflow.com/questions/13212625/typescript-function-overloading).
-                         TODO: The issue is that I'm checking if the user is a student or an advisor using ngIf, but have no way to check in ngModel and value.
-                         TODO: One solution could be to simply combine all variables into User, but this is not ideal as IDK at this point how that would work with the backend when that's finished.
-                         TODO: Need to investigate other solutions to this problem. -->
+                    <!-- User has child interfaces Faculty and Student, which each have different variables that are needed for each. An issue comes up that JavaScript cannot overload functions (see: https://stackoverflow.com/questions/13212625/typescript-function-overloading). Because of this, TypeScript has 'Unions' that can be used for similar functions (see: https://stackoverflow.com/questions/13212625/typescript-function-overloading).The issue is that I'm checking if the user is a student or an advisor using ngIf, but have no way to check in ngModel and value since the typescript does not continue. My (hopefully working) solution to this is to create a 'UserInfo' interface in account.component.ts which has all the options from both student and faculty. Since the TS can differentiate between the two when currentUser is called, the constructor sets whichever variables are needed to their respective one in the userInfo for use here. -->
                     <md-card-content>
-                        <div *ngIf="checkUser(currentUser) === 'student'">
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="Full Name" value="{{currentUser.fullName}}" type="text" class="form-control" name="fullname" id="student-name" required #fullName />
-                            </md-input-container>
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="DePaul ID Number" type="number" class="form-control" id="student-id" value="{{currentUser.depaulID}}" maxlength="7" required>
-                            </md-input-container>
-                            <label class="selected-value">Current Student Status</label>
-                            <md-select placeholder="Current Status" [(ngModel)]="currentUser.status">
-                                <md-option *ngFor="let status of statuses" [value]="{{currentUser.status}}">
-                                    {{status}}
-                                </md-option>
-                            </md-select>
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="Phone Number" type="tel" class="form-control" name="phone" id="phone-number" value="{{currentUser.phone}}" required #phoneNumber="ngModel" minlength="10" maxlength="11" />
-                            </md-input-container>
+                        <!--<div *ngIf="checkUser(currentUser) === 'student' || null">-->
+                        <md-input-container class="full-width">
+                            <input mdInput placeholder="Full Name" value="{{currentUser.fullName}}" type="text" class="form-control" name="fullname" id="student-name" required #fullName />
+                        </md-input-container>
+                        <md-input-container class="full-width">
+                            <input mdInput placeholder="DePaul ID Number" type="number" class="form-control" id="student-id" value="{{currentUser.depaulID}}" maxlength="7" required>
+                        </md-input-container>
+                        <!--<label class="selected-value">Current Student Status</label>
+                        <md-select placeholder="Current Status" [(ngModel)]="userInfo.status">
+                            <md-option *ngFor="let status of statuses" value="{{userInfo.status}}">
+                                {{status}}
+                            </md-option>
+                        </md-select>-->
+                        <md-input-container class="full-width">
+                            <input mdInput placeholder="Phone Number" type="tel" class="form-control" name="phone" id="phone" value="{{currentUser.phone}}" required #phone minlength="10" maxlength="11" />
+                        </md-input-container>
 
-                            <label>Home Address</label>
-                            <md-input-container class="full-width">
-                                <textarea mdInput placeholder="Address" value="{{currentUser.address}}"></textarea>
-                            </md-input-container>
-                            <md-input-container class="full-width">
-                                <textarea mdInput placeholder="Address 2" value="{{currentUser.address2}}"></textarea>
-                            </md-input-container>
-                            <table class="full-width" cellspacing="0">
-                                <tr>
-                                    <td>
-                                        <md-input-container class="full-width">
-                                            <input mdInput placeholder="City" value="{{currentUser.city}}">
-                                        </md-input-container>
-                                    </td>
-                                    <td>
-                                        <md-input-container class="full-width">
-                                            <input mdInput placeholder="State" value="{{currentUser.state}}">
-                                        </md-input-container>
-                                    </td>
-                                    <td>
-                                        <md-input-container class="full-width">
-                                            <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="{{currentUser.zip}}">
-                                            <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-                                        </md-input-container>
-                                    </td>
-                                </tr>
-                            </table>
+                        <label>Home Address</label>
+                        <md-input-container class="full-width">
+                            <textarea mdInput placeholder="Address" value="{{currentUser.address}}"></textarea>
+                        </md-input-container>
+                        <md-input-container class="full-width">
+                            <textarea mdInput placeholder="Address 2" value="{{currentUser.address2}}"></textarea>
+                        </md-input-container>
+                        <table class="full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <md-input-container class="full-width">
+                                        <input mdInput placeholder="City" value="{{currentUser.city}}">
+                                    </md-input-container>
+                                </td>
+                                <td>
+                                    <md-input-container class="full-width">
+                                        <input mdInput placeholder="State" value="{{currentUser.state}}">
+                                    </md-input-container>
+                                </td>
+                                <td>
+                                    <md-input-container class="full-width">
+                                        <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="{{currentUser.zip}}">
+                                        <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--</div>-->
+
+                        <div *ngIf="checkUser(currentUser) === 'advisor'">
                         </div>
 
                     </md-card-content>
                     <md-card-actions>
-
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <button color="primary" md-raised-button class="btn btn-primary" (click)="update(currentUser.id)">Update</button>
+                                <button md-button [routerLink]="['/']" class="btn btn-link">Back</button>
+                            </div>
+                            <div>
+                                <button color="warn" md-raised-button class="btn btn-danger" (click)="deleteUser(currentUser.id)"><span class="pull-right">Delete Myself</span></button>
+                            </div>
+                        </div>
                     </md-card-actions>
                 </form>
-            </md-card>
-        </div>
-    </div>
-</div>
-
-
-<div class="flexbox-parent">
-    <div fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" style="min-height: 600px">
-        <div class="col-8">
-            <md-card class="flex-item">
-                <md-card-header>
-                    <h2>My Account</h2>
-                </md-card-header>
-                <md-card-content>
-                    <form name="form" (ngSubmit)="f.form.valid && update()" #f="ngForm" novalidate>
-                        <div class="form-group">
-                            <label for="full-name">Full Name</label>
-                            <input type="text" class="form-control" id="full-name">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="id-number">DePaul ID Number</label>
-                            <input type="number" class="form-control" id="id-number" value="{{currentUser.depaulID}}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" class="form-control" id="email" value="{{currentUser.email}}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" value="{{currentUser.username}}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" value="{{currentUser.password}}">
-                        </div>
-                    </form>
-                </md-card-content>
-                <md-card-actions>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <button color="primary" md-raised-button [disabled]="loading" class="btn btn-primary" (click)="update(currentUser.id)">Update</button>
-                            <button md-button [routerLink]="['/']" class="btn btn-link">Back</button>
-                        </div>
-                        <div>
-                            <button color="warn" md-raised-button class="btn btn-danger" (click)="deleteUser(currentUser.id)"><span class="pull-right">Delete Myself</span></button>
-                            <button color="warn" md-raised-button class="btn btn-danger" (click)="openDialog()"><span class="pull-right">Delete Myself</span></button>
-                        </div>
-                    </div>
-                </md-card-actions>
-                <md-card-footer>
-
-                </md-card-footer>
             </md-card>
         </div>
     </div>

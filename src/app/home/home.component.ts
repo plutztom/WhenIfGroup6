@@ -6,6 +6,13 @@ import { When } from '../_models/when'
 import { UserService } from '../_services/user.service';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
+class WhenIfInput {
+    quarter: string;
+    year: string;
+    working?: boolean;
+    classesPer: number;
+}
+
 @Component({
     moduleId: module.id,
     templateUrl: 'home.component.html',
@@ -14,6 +21,7 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 export class HomeComponent implements OnInit {
     currentUser: User;
+    input: WhenIfInput;
     users: User[] = [];
     isAdvisor: boolean;
     source: LocalDataSource;
@@ -72,9 +80,13 @@ export class HomeComponent implements OnInit {
         this.loadAllUsers();
     }
 
+    onChange() {
+
+    }
+
     // TODO: Implement WhenIf calculations once the backend is completed.
     whenIf() {
-
+        alert('Sorry! Not ready yet!');
     }
 
     showAdvisor() {

@@ -1,8 +1,5 @@
-$break-small: 575px;
-.spacer {
-    flex: 1 1 auto;
-}
-
+$break-small: 767px;
+$padding: 20px;
 .header-name {
     font-weight: 300;
 }
@@ -11,19 +8,36 @@ label {
     font-size: 19px;
 }
 
+md-card {
+    padding: 0;
+}
+
 md-card-header {
     padding-top: 25px;
-    padding-bottom: 50px;
 }
 
 md-select {
-    padding: 15px;
+    padding: $padding;
+}
+
+.full-name {
+    margin-top: 5px;
 }
 
 .full-width {
-    width: 100%;
+    width: 93%;
+    padding-left: $padding;
 }
 
+.outside-full-width {
+    width: 93%;
+    padding-left: $padding;
+}
+
+// .tabs {
+//     padding-left: 15px;
+//     padding-right: 15px;
+// }
 .radio-group {
     @media screen and (min-width: $break-small) {
         display: inline-flex;
@@ -35,14 +49,18 @@ md-select {
     }
 }
 
+.label {
+    margin: 15px 0;
+}
+
 .radio-button {
     margin-right: 15px;
     padding-left: 15px;
 }
 
 .selected-value {
-    padding-left: 15px;
-    margin: 15px 0;
+    padding-left: $padding;
+    padding-top: $padding;
 }
 
 .button-align {
@@ -50,6 +68,7 @@ md-select {
 }
 
 md-card {
+    margin: 30px 0 30px 0;
     padding-top: 15px;
     padding-bottom: 15px;
 }

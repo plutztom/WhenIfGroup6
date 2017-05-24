@@ -6,21 +6,34 @@ export interface User {
     fullName:        string;
     depaulID:        number;
     isAdvisor?:      boolean;
-    // jobTitle:        string;
 
     username:        string;
     password:        string;
 }
 
-export interface Faculty extends User {
+export class Faculty implements User {
     // TODO: remove 'id' and simply use DePaulID as the ID.
+    id:              number;
+    fullName:        string;
+    depaulID:        number;
+    isAdvisor?:      boolean;
+
+    username:        string;
+    password:        string;
+
     jobTitle:        string;
 
 }
 
 
-export interface Student extends User {
-    // TODO: remove 'id' and simply use DePaulID as the ID.
+export class Student implements User {
+    id:              number;
+    fullName:        string;
+    depaulID:        number;
+    isAdvisor?:      boolean;
+
+    username:        string;
+    password:        string;
 
     status:          string; // Active, Graduated, or Frozen
     termStart:       Date;

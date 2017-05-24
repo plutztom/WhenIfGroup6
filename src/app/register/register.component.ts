@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Faculty, Student } from './../_models/user';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdTabsModule } from '@angular/material';
 
 import { AlertService } from '../_services/alert.service';
 import { UserService } from '../_services/user.service';
@@ -14,7 +15,7 @@ import { UserService } from '../_services/user.service';
 // TODO: Check if DePaul ID is already in the database.
 export class RegisterComponent {
     model: any = {};
-    loading = false;
+    currentTab = 0;
     statuses = [
         'Active',
         'Graduated',
@@ -38,9 +39,9 @@ export class RegisterComponent {
                 public snackBar: MdSnackBar) {
     }
 
-    onPersonChange(personType: string) {
-        this.personType = personType;
-    }
+    // onSelectChange = ($event: any): void => {
+    //       this.currentTab = $event.index;
+    // }
 
     onGenderChange(genderType: string) {
         return genderType;
@@ -60,4 +61,5 @@ export class RegisterComponent {
                     });
                 });
     }
+
 }
