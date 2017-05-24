@@ -21,6 +21,10 @@ class WhenIfInput {
 
 export class HomeComponent implements OnInit {
     currentUser: User;
+    search: string;
+    quarterValue: string;
+    yearValue: number;
+    classesPerQuarter: number;
     input: WhenIfInput;
     users: User[] = [];
     isAdvisor: boolean;

@@ -57,6 +57,7 @@ export class AccountComponent implements OnInit {
 
 
         if (this.currentUser instanceof Student) {
+            this.currentUser.id = this.userInfo.id;
             this.currentUser.fullName = this.userInfo.fullName;
             this.currentUser.depaulID = this.userInfo.depaulID;
             this.currentUser.username = this.userInfo.username;
@@ -75,6 +76,7 @@ export class AccountComponent implements OnInit {
             this.currentUser.zip = this.userInfo.zip;
 
         } else if (this.currentUser instanceof Faculty) {
+            this.currentUser.id = this.userInfo.id;
             this.currentUser.fullName = this.userInfo.fullName;
             this.currentUser.depaulID = this.userInfo.depaulID;
             this.currentUser.username = this.userInfo.username;

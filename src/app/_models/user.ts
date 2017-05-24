@@ -9,6 +9,20 @@ export interface User {
 
     username:        string;
     password:        string;
+
+    jobTitle?:        string;
+
+    status?:          string; // Active, Graduated, or Frozen
+    termStart?:       Date;
+    termEnd?:        Date;
+    dateOfBirth?:    Date;
+    email?:           string;
+    phone?:          number;
+    address?:        string;
+    address2?:       string;
+    city?:           string;
+    state?:          string;
+    zip?:            number;
 }
 
 export class Faculty implements User {
@@ -23,6 +37,18 @@ export class Faculty implements User {
 
     jobTitle:        string;
 
+    status?:          string; // Active, Graduated, or Frozen
+    termStart?:       Date;
+    termEnd?:        Date;
+    dateOfBirth?:    Date;
+    email:           string;
+    phone?:          number;
+    address?:        string;
+    address2?:       string;
+    city?:           string;
+    state?:          string;
+    zip?:            number;
+
 }
 
 
@@ -34,6 +60,8 @@ export class Student implements User {
 
     username:        string;
     password:        string;
+
+    jobTitle?:        string;
 
     status:          string; // Active, Graduated, or Frozen
     termStart:       Date;

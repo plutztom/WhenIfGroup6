@@ -26,7 +26,7 @@
                                         it thows an error: "Uncaught (in promise): TypeError: Cannot read property 'length' of null"
                                         In other words, 'depaulID' will not work, but 'depaulId' WILL work!
                                         I may have to file a bug on the Angular GitHub with this one... -->
-                                    <input mdInput #depaulId maxlength="7" placeholder="DePaul ID Number">
+                                    <input mdInput #depaulId maxlength="7" placeholder="DePaul ID Number" [(ngModel)]="model.depaulID">
                                     <md-hint align="end">{{depaulId.value.length}} / 7</md-hint>
                                 </md-input-container>
                                 <div class="full-width">

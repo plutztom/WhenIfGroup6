@@ -63,14 +63,14 @@
                         </table>
                         <!--</div>-->
 
-                        <div *ngIf="checkUser(currentUser) === 'advisor'">
-                        </div>
+                        <!--<div *ngIf="checkUser(currentUser) === 'advisor'">
+                        </div>-->
 
                     </md-card-content>
                     <md-card-actions>
                         <div class="d-flex justify-content-between">
                             <div>
-                                <button color="primary" md-raised-button class="btn btn-primary" (click)="update(currentUser.id)">Update</button>
+                                <button color="primary" md-raised-button class="btn btn-primary" (click)="update()">Update</button>
                                 <button md-button [routerLink]="['/']" class="btn btn-link">Back</button>
                             </div>
                             <div>
