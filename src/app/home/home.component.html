@@ -1,0 +1,85 @@
+<md-toolbar color="primary" layout="row" layout-align="center center">
+    <button md-button [routerLink]="['/']">When If?</button>
+    <span class="spacer extra-space"></span>
+    <!--<div>-->
+    <!--<i class="material-icons">search</i>-->
+    <input name="search" class="search" [(ngModel)]="search" type="text" placeholder="Search">
+    <span class="spacer"></span>
+    <button md-button [routerLink]="['/account']">My Account</button>
+    <button md-raised-button color="warn" [routerLink]="['/login']">Logout</button>
+</md-toolbar>
+
+<div class="container flexbox-parent">
+    <div fxLayout="column" fxLayoutAlign="space-around center" style="min-height: 600px">
+        <div class="main">
+            <h1>Welcome, {{currentUser.fullName}}</h1>
+        </div>
+        <div class="main col-8">
+            <md-card class="flex-item">
+                <md-card-header>
+                    <h3>When would I finish, if...</h3>
+                </md-card-header>
+                <hr>
+                <md-card-content>
+                    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>
+                        <div class="row">
+                            <label for="quarter">I start in</label>
+                            <md-select placeholder="Quarter" [(ngModel)]="quarterValue" name="quarter">
+                                <md-option *ngFor="let quarter of quarters" [value]="quarter">
+                                    {{quarter}}
+                                </md-option>
+                            </md-select>
+
+                            <md-select placeholder="Year" [(ngModel)]="yearValue" name="year">
+                                <md-option *ngFor="let year of years" [value]="year">
+                                    {{year}}
+                                </md-option>
+                            </md-select>
+                            <label for="year">,</label>
+                        </div>
+                        <div class="row">
+                            <md-checkbox name="isWorking" [(ngModel)]="isWorking" (change)="onChange" align="end" color="primary">
+                                <label for="isWorking">I'm working during school</label>
+                            </md-checkbox>
+                            <label for="isWorking">,</label>
+                        </div>
+                        <div class="row">
+                            <label for="classesPerQuarter">I take no more than</label>
+                            <md-select placeholder="Number of Classes" [(ngModel)]="classesPerQuarter" name="classesPerQuarter">
+                                <md-option *ngFor="let number of numbers" [value]="number">
+                                    {{number}}
+                                </md-option>
+                            </md-select>
+                            <label for="classesPerQuarter">classes per quarter,</label>
+                        </div>
+                        <!-- TODO: Add more options!!! -->
+                    </form>
+                </md-card-content>
+                <md-card-actions>
+                    <button md-raised-button color="primary" (click)="whenIf()">{{"When would I finish school?" | uppercase}}</button>
+                </md-card-actions>
+                <md-card-footer>
+                </md-card-footer>
+            </md-card>
+        </div>
+    </div>
+</div>
+
+<!--<div *ngIf="!showAdvisor()">-->
+<!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
+<!--</div>-->
+
+<!--<div *ngIf="showAdvisor() == true">-->
+<!--<h3>All registered users:</h3>-->
+
+<!--<ul>-->
+<!--<li *ngFor="let user of users">-->
+<!--{{user.username}} ({{user.fullName}} {{user.depaulID}})-->
+<!--</li>-->
+<!--</ul>-->
+
+<!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

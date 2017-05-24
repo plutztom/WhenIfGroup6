@@ -1,0 +1,28 @@
+
+.container {
+    padding-top: 15px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.header-name {
+    font-weight: 300;
+
+    margin-left: -15px;
+}
+
+md-card-header {
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+md-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: auto;
+
+    padding-top: 50px;
+    padding-bottom: 25px;
+}
