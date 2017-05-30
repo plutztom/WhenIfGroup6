@@ -27,6 +27,7 @@ import { MaterialModule, MdNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
+import { BgImageDirective } from './bg-image.directive';
 
 @NgModule({
     imports: [
@@ -50,6 +51,7 @@ import 'hammerjs';
         LoginComponent,
         RegisterComponent,
         AccountComponent,
+        BgImageDirective,
     ],
     entryComponents: [
         AppComponent,

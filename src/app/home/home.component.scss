@@ -1,3 +1,7 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+// @import '~@angular/material/theming';
 .body {
     padding-top: 15px;
 }
@@ -49,5 +53,34 @@ md-card-actions {
     display: flex;
     justify-content: flex-end;
     margin-right: auto;
-    // padding-left: 30px;
+}
+
+table,
+td,
+th {
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    font-weight: 400;
+    background-color: #2196F3;
+    color: white;
+}
+
+th,
+td {
+    padding: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #d9d9d9;
 }

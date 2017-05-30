@@ -16,16 +16,13 @@
                     <md-card-content>
                         <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !username.valid}">
                             <md-input-container class="col-11">
-                                <input mdInput placeholder="Username" name="username" type="text" class="form-control"
-                                       [(ngModel)]="model.username" #username="ngModel" id="username" required/>
+                                <input mdInput placeholder="Username" name="username" type="text" class="form-control" [(ngModel)]="model.username" #username="ngModel" id="username" required/>
                                 <md-error *ngIf="f.submitted && !username.valid">Enter your username</md-error>
                             </md-input-container>
                         </div>
                         <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
                             <md-input-container class="col-11">
-                                <input mdInput placeholder="Password" name="password" type="password"
-                                       class="form-control" [(ngModel)]="model.password" #password="ngModel"
-                                       id="password" required/>
+                                <input mdInput placeholder="Password" name="password" type="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" id="password" required/>
                                 <md-error *ngIf="f.submitted && !password.valid">Enter your password</md-error>
                             </md-input-container>
                         </div>

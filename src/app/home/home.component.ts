@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { User } from '../_models/user';
 import { Class } from '../_models/class'
 import { When } from '../_models/when'
 import { UserService } from '../_services/user.service';
+
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
+import { DatatableComponent } from '@swimlane/ngx-datatable/src/components/datatable.component';
+
 
 class WhenIfInput {
     quarter: string;
@@ -69,6 +72,18 @@ export class HomeComponent implements OnInit {
         },
     };
 
+  rows = [];
+
+  temp = [];
+
+  columns = [
+    { prop: 'Full Name' },
+    { name: 'DePaul ID' },
+    { name: 'Status' }
+  ];
+
+    @ViewChild(DatatableComponent) table: DatatableComponent;
+
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.isAdvisor = JSON.parse(localStorage.getItem('currentUser.isAdvisor'));
@@ -78,6 +93,10 @@ export class HomeComponent implements OnInit {
         this.userService.getAll().subscribe(data => {
             this.source.load(data);
         })
+
+        //this.temp = [...JSON.parse(localStorage.getItem('currentUser'))];
+
+        this.rows = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
@@ -110,4 +129,18 @@ export class HomeComponent implements OnInit {
             this.users = users;
         });
     }
+
+    updateFilter(event) {
+    const val = event.target.value.toLowerCase();
+
+    // filter our data
+    const temp = this.temp.filter(function(d) {
+      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+
+    // update the rows
+    this.rows = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.table.offset = 0;
+  }
 }
