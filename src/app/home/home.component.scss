@@ -1,7 +1,3 @@
-@import '~@swimlane/ngx-datatable/release/index.css';
-@import '~@swimlane/ngx-datatable/release/themes/material.css';
-@import '~@swimlane/ngx-datatable/release/assets/icons.css';
-// @import '~@angular/material/theming';
 .body {
     padding-top: 15px;
 }
@@ -10,8 +6,9 @@
     flex: 1 1 auto;
 }
 
+// Remove extra space after presentation Wednesday and IMPLEMENT IT PROPERLY!!!!!
 .extra-space {
-    padding-left: 7%
+    padding-left: 7%;
 }
 
 .main {
@@ -46,7 +43,6 @@ label {
 
 md-select {
     padding: 0 5px 0 5px;
-    // margin-right: 15px;
 }
 
 md-card-actions {
@@ -55,26 +51,22 @@ md-card-actions {
     margin-right: auto;
 }
 
-table,
-td,
-th {
-    text-align: left;
-}
-
 table {
-    border-collapse: collapse;
     width: 100%;
 }
 
 th {
-    font-weight: 400;
+    height: 50px;
     background-color: #2196F3;
-    color: white;
+    color: #ffffff;
+    font-weight: 400;
 }
 
 th,
 td {
+    font-weight: 300px;
     padding: 15px;
+    text-align: left;
 }
 
 tr:nth-child(even) {
@@ -82,5 +74,5 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-    background-color: #d9d9d9;
+    background-color: #e9e9e9;
 }

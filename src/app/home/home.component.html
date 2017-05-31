@@ -77,41 +77,18 @@
                         <tr>
                             <th>Full Name</th>
                             <th>DePaul ID</th>
-                            <th>View</th>
+                            <th></th>
                         </tr>
                         <tbody>
                             <tr *ngFor="let user of users">
                                 <td>{{user.fullName}}</td>
                                 <td>{{user.depaulID}}</td>
-                                <td><a [routerLink]="['/']">View</a></td>
+                                <td style="text-align: right"><button md-button (click)="login(user.username, user.password)">View</button></td>
                             </tr>
                         </tbody>
                     </table>
-                    <md-card-actions>
-
-                    </md-card-actions>
                 </div>
-
             </md-card>
         </div>
     </div>
 </div>
-
-<!--<div *ngIf="!showAdvisor()">-->
-<!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
-<!--</div>-->
-
-<!--<div *ngIf="showAdvisor() == true">-->
-<!--<h3>All registered users:</h3>-->
-
-<!--<ul>-->
-<!--<li *ngFor="let user of users">-->
-<!--{{user.username}} ({{user.fullName}} {{user.depaulID}})-->
-<!--</li>-->
-<!--</ul>-->
-
-<!--<ng2-smart-table [settings]="settings" [source]="user"></ng2-smart-table>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->

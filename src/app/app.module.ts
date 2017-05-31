@@ -13,7 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
-import { AlertComponent } from './alert/alert.component';
+// import { AlertComponent } from './alert/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
@@ -22,12 +22,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MaterialModule, MdNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
-import { BgImageDirective } from './bg-image.directive';
 
 @NgModule({
     imports: [
@@ -37,7 +35,6 @@ import { BgImageDirective } from './bg-image.directive';
         HttpModule,
         NgbModule.forRoot(),
         routing,
-        Ng2SmartTableModule,
         MaterialModule,
         BrowserAnimationsModule,
         MdNativeDateModule,
@@ -46,12 +43,11 @@ import { BgImageDirective } from './bg-image.directive';
 
     declarations: [
         AppComponent,
-        AlertComponent,
+        // AlertComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
         AccountComponent,
-        BgImageDirective,
     ],
     entryComponents: [
         AppComponent,

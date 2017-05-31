@@ -1,14 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { User } from '../_models/user';
-import { Class } from '../_models/class'
-import { When } from '../_models/when'
+import { Class } from '../_models/class';
 import { UserService } from '../_services/user.service';
-
-import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
-import { DatatableComponent } from '@swimlane/ngx-datatable/src/components/datatable.component';
-
-
+import {Router, ActivatedRoute} from '@angular/router';
+import {AlertService} from '../_services/alert.service';
+import {AuthenticationService} from '../_services/authentication.service';
 class WhenIfInput {
     quarter: string;
     year: string;
@@ -23,6 +20,8 @@ class WhenIfInput {
 })
 
 export class HomeComponent implements OnInit {
+    returnUrl: string;
+
     currentUser: User;
     search: string;
     quarterValue: string;
@@ -31,10 +30,8 @@ export class HomeComponent implements OnInit {
     input: WhenIfInput;
     users: User[] = [];
     isAdvisor: boolean;
-    source: LocalDataSource;
     working = false;
-    whenParams: When;
-    classesArray:Array<string> = ['1', '2', '3'];
+    classesArray: Array<string> = ['1', '2', '3'];
     quarters = [
         'Fall',
         'Winter',
@@ -82,25 +79,22 @@ export class HomeComponent implements OnInit {
     { name: 'Status' }
   ];
 
-    @ViewChild(DatatableComponent) table: DatatableComponent;
-
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+                private route: ActivatedRoute,
+                private authenticationService: AuthenticationService,
+                private router: Router,
+                private alertService: AlertService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.isAdvisor = JSON.parse(localStorage.getItem('currentUser.isAdvisor'));
-
-        this.source = new LocalDataSource();
-
-        this.userService.getAll().subscribe(data => {
-            this.source.load(data);
-        })
-
-        //this.temp = [...JSON.parse(localStorage.getItem('currentUser'))];
 
         this.rows = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
         this.loadAllUsers();
+
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     }
 
     onChange() {
@@ -141,6 +135,17 @@ export class HomeComponent implements OnInit {
     // update the rows
     this.rows = temp;
     // Whenever the filter changes, always go back to the first page
-    this.table.offset = 0;
   }
+
+  login(username, password) {
+        this.authenticationService.login(username, password)
+            .subscribe(
+                data => {
+                    this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    this.alertService.error(error);
+                });
+    }
+
 }

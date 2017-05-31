@@ -3,7 +3,6 @@ import {User, Student, Faculty} from '../_models/user';
 import {UserService} from '../_services/user.service';
 import {Router} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
-import { Click } from '../click';
 import { MdSnackBar } from '@angular/material';
 
 interface UserInfo {
@@ -37,7 +36,6 @@ interface UserInfo {
 })
 export class AccountComponent implements OnInit {
     currentUser: Student | Faculty;
-    click: Click;
     delete? = false;
     status: string;
     userInfo: UserInfo;

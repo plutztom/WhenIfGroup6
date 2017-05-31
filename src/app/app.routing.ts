@@ -16,7 +16,7 @@ const appRoutes: Routes = [
     {path: 'account', component: AccountComponent},
 
     // otherwise redirect to home
-    //{path: '**', redirectTo: ''}
+    // {path: '**', redirectTo: ''}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
