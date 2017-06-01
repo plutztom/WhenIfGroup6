@@ -5,18 +5,18 @@ export interface User {
     id:              number;
     fullName:        string;
     depaulID:        number;
-    isAdvisor?:      boolean;
+    isAdvisor:       number;
 
     username:        string;
     password:        string;
 
-    jobTitle?:        string;
+    jobTitle?:       string;
 
-    status?:          string; // Active, Graduated, or Frozen
-    termStart?:       Date;
+    status?:         string; // Active, Graduated, or Frozen
+    termStart?:      Date;
     termEnd?:        Date;
     dateOfBirth?:    Date;
-    email?:           string;
+    email?:          string;
     phone?:          number;
     address?:        string;
     address2?:       string;
@@ -30,7 +30,7 @@ export class Faculty implements User {
     id:              number;
     fullName:        string;
     depaulID:        number;
-    isAdvisor?:      boolean;
+    isAdvisor:       number;
 
     username:        string;
     password:        string;
@@ -56,7 +56,7 @@ export class Student implements User {
     id:              number;
     fullName:        string;
     depaulID:        number;
-    isAdvisor?:      boolean;
+    isAdvisor:       number;
 
     username:        string;
     password:        string;

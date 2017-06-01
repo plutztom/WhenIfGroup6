@@ -12,8 +12,7 @@
                     </md-card-header>
                     <hr>
                     <md-card-content>
-                        <!--<md-tab-group name="tabs" class="tabs" #tabGroup (selectChange)="onSelectChange($event)">-->
-                        <md-tab-group name="tabs" class="tabs" #tabGroup>
+                        <md-tab-group name="tabs" class="tabs" #tabGroup [(selectedIndex)]=model.isAdvisor>
                             <md-tab label="Student">
                                 <label for="address" class="selected-value padding-top">Student Registration</label>
                                 <md-input-container class="full-width">

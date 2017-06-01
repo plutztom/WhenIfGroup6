@@ -16,6 +16,7 @@ import { UserService } from '../_services/user.service';
 export class RegisterComponent {
     model: any = {};
     currentTab = 0;
+    selectedIndex = 0;
     statuses = [
         'Active',
         'Graduated',
@@ -39,15 +40,14 @@ export class RegisterComponent {
                 public snackBar: MdSnackBar) {
     }
 
-    // onSelectChange = ($event: any): void => {
-    //       this.currentTab = $event.index;
-    // }
-
     onGenderChange(genderType: string) {
         return genderType;
     }
 
     register() {
+        // Set Advisor status based on Current Tab
+        // if (this.currentTab === 0) { this.model.isAdvisor = false; } else { this.model.isAdvisor = true; }
+
         this.userService.create(this.model)
             .subscribe(
                 data => {
