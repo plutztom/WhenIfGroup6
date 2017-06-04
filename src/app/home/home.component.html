@@ -16,7 +16,7 @@
         </div>
         <div class="main col-8">
 
-            <div *ngIf="currentUser.isAdvisor == 0">
+            <div *ngIf="currentUser.isAdvisor == 0 || currentUser.isAdvisor == null">
                 <md-card class="flex-item">
                     <!-- Student View -->
                     <md-card-header>

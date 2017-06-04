@@ -51,6 +51,7 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
                 data => {
+                    this.router.navigate(['/']);
                     this.snackBar.open('Registration Successful', 'Dismiss', {
                         duration: 2000,
                     });

@@ -30,15 +30,15 @@ export class Faculty implements User {
     id:              number;
     fullName:        string;
     depaulID:        number;
-    isAdvisor:       number;
+    isAdvisor        = 1;
 
     username:        string;
     password:        string;
 
     jobTitle:        string;
 
-    status?:          string; // Active, Graduated, or Frozen
-    termStart?:       Date;
+    status?:         string; // Active, Graduated, or Frozen
+    termStart?:      Date;
     termEnd?:        Date;
     dateOfBirth?:    Date;
     email:           string;
@@ -56,12 +56,12 @@ export class Student implements User {
     id:              number;
     fullName:        string;
     depaulID:        number;
-    isAdvisor:       number;
+    isAdvisor        = 0;
 
     username:        string;
     password:        string;
 
-    jobTitle?:        string;
+    jobTitle?:       string;
 
     status:          string; // Active, Graduated, or Frozen
     termStart:       Date;
