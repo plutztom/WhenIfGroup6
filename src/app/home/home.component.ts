@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Jsonp, ConnectionBackend  } from '@angular/http';
+import { SearchService } from './../search.service';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import { User } from '../_models/user';
 import { Class } from '../_models/class';
@@ -6,6 +8,7 @@ import { UserService } from '../_services/user.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AlertService} from '../_services/alert.service';
 import {AuthenticationService} from '../_services/authentication.service';
+
 class WhenIfInput {
     quarter: string;
     year: string;
@@ -16,14 +19,16 @@ class WhenIfInput {
 @Component({
     moduleId: module.id,
     templateUrl: 'home.component.html',
-    styleUrls: ['home.component.scss']
+    styleUrls: ['home.component.scss'],
+    providers: [SearchService, Jsonp]
 })
 
 export class HomeComponent implements OnInit {
-    returnUrl: string;
+    @Input() search: string;
 
+    searchQuery: string;
+    returnUrl: string;
     currentUser: User;
-    search: string;
     quarterValue: string;
     yearValue: number;
     classesPerQuarter: number;
@@ -83,11 +88,16 @@ export class HomeComponent implements OnInit {
                 private route: ActivatedRoute,
                 private authenticationService: AuthenticationService,
                 private router: Router,
-                private alertService: AlertService) {
+                private alertService: AlertService,
+                private searchService: SearchService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.isAdvisor = JSON.parse(localStorage.getItem('currentUser.isAdvisor'));
 
         this.rows = JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+    onKey(term) {
+      this.searchService.search(term);
     }
 
     ngOnInit() {

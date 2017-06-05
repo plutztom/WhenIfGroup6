@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, ConnectionBackend } from '@angular/http';
 
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -13,7 +13,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
-// import { AlertComponent } from './alert/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
@@ -24,8 +23,10 @@ import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
 import { MaterialModule, MdNativeDateModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchService } from './search.service';
 
 import 'hammerjs';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     imports: [
@@ -33,26 +34,28 @@ import 'hammerjs';
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
-        NgbModule.forRoot(),
+        NgbModule,
         routing,
         MaterialModule,
         BrowserAnimationsModule,
         MdNativeDateModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        ReactiveFormsModule,
     ],
 
     declarations: [
         AppComponent,
-        // AlertComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
         AccountComponent,
+        SearchComponent,
     ],
     entryComponents: [
         AppComponent,
     ],
     providers: [
+        SearchService,
         AuthGuard,
         AlertService,
         AuthenticationService,
@@ -61,7 +64,7 @@ import 'hammerjs';
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,
-        BaseRequestOptions
+        BaseRequestOptions,
     ],
     bootstrap: [AppComponent]
 })

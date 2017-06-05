@@ -1,0 +1,82 @@
+@mixin transition($type, $time, $how) {
+    -webkit-transition: $type $time $how;
+    -moz-transition: $type $time $how;
+    -ms-transition: $type $time $how;
+    -o-transition: $type $time $how;
+    transition: $type $time $how;
+}
+
+@mixin user-select($select) {
+    -webkit-user-select: $select;
+    -moz-user-select: $select;
+    -ms-user-select: $select;
+    user-select: $select;
+}
+
+
+/* Disable selection with class "noUserSelect" */
+
+.noUserSelect {
+    @include user-select(none);
+}
+
+
+/* Search bar (header) */
+
+.searchBarMain {
+    background: #fff;
+    width: 80%;
+    max-width: 680px;
+    margin: 0 auto;
+    height: 42px;
+    margin-top: 11px;
+    border-radius: 2px;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.14);
+    @include transition(all, 0.2s, ease-in-out);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0
+}
+
+.searchBarMain i.searchBarSearchIcon {
+    height: 100%;
+    line-height: 42px;
+    float: left;
+    width: 52px;
+    text-align: center;
+    color: rgba(68, 68, 68, 0.5);
+}
+
+.searchBarMain input#searchBarInput {
+    height: 42px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    background: transparent;
+    width: calc(100% - 52px);
+    outline: none;
+    padding-right: 32px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.76);
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+
+.searchBarMain i.clearSearchBarField {
+    display: none;
+    font-size: 20px;
+}
+
+md-progress-spinner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 12px;
+    top: 5px;
+}
+
+.searchBarMain i.clearSearchBarField:hover {
+    cursor: pointer;
+}

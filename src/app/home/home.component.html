@@ -1,21 +1,15 @@
-<md-toolbar color="primary" layout="row" layout-align="center center">
+<md-toolbar color="primary" layout="row" layout-align="center center" class="page-header">
     <button md-button [routerLink]="['/']">When If?</button>
-    <span class="spacer extra-space"></span>
-    <!--<div>-->
-    <!--<i class="material-icons">search</i>-->
-    <input name="search" class="search" [(ngModel)]="search" type="text" placeholder="Search">
+    <when-if-search></when-if-search>
     <span class="spacer"></span>
     <button md-button [routerLink]="['/account']">My Account</button>
     <button md-raised-button color="warn" [routerLink]="['/login']">Logout</button>
 </md-toolbar>
 
 <div class="container flexbox-parent">
-    <div fxLayout="column" fxLayoutAlign="space-around center" style="min-height: 600px">
-        <div class="main">
-            <h1>Welcome, {{currentUser.fullName}}</h1>
-        </div>
-        <div class="main col-8">
-
+    <div fxLayout="column" fxLayoutAlign="space-around center" style="min-height: 600px" class="main">
+        <h1>Welcome, {{currentUser.fullName}}.</h1>
+        <div class="col-8">
             <div *ngIf="currentUser.isAdvisor == 0 || currentUser.isAdvisor == null">
                 <md-card class="flex-item">
                     <!-- Student View -->
