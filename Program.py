@@ -4,6 +4,7 @@ class Program:
     concentration = ""
 
     requiredClasses = []
+    info = {}
 
 
     def __init__(self,name):
@@ -24,6 +25,14 @@ class Program:
                                  loadCourses.getCourse("CSC421"), loadCourses.getCourse("CSC435"),
                                  loadCourses.getCourse("CSC447"), loadCourses.getCourse("CSC453"),
                                  loadCourses.getCourse("SE450")]
+        }
+        self.info = {
+            "Information Systems - Business Analysis/Systems Analysis": "Students must complete 1 CDM Open Elective Course chosen from either IS concentration courses from any IS concentration or other courses meeting the following rules:\nAny CNS, CSC, ECT, GAM, GPH, HCI, HIT, IS, IT, PM, SE, or TDC course in the 421-699 range qualifies.",
+            "Information Systems - Business Intelligence": "Students must complete 1 CDM Open Elective Course chosen from either IS concentration courses from any IS concentration or other courses meeting the following rules:\nAny CNS, CSC, ECT, GAM, GPH, HCI, HIT, IS, IT, PM, SE, or TDC course in the 421-699 range qualifies.",
+            "Information Systems - DB Administration": "Students must complete 1 CDM Open Elective Course chosen from either IS concentration courses from any IS concentration or other courses meeting the following rules:\nAny CNS, CSC, ECT, GAM, GPH, HCI, HIT, IS, IT, PM, SE, or TDC course in the 421-699 range qualifies.",
+            "Information Systems - IT Enterprise Management": "Students must complete 1 CDM Open Elective Course chosen from either IS concentration courses from any IS concentration or other courses meeting the following rules:\nAny CNS, CSC, ECT, GAM, GPH, HCI, HIT, IS, IT, PM, SE, or TDC course in the 421-699 range qualifies.",
+            "Information Systems - Standard": "Students must complete 1 CDM Open Elective Course chosen from either IS concentration courses from any IS concentration or other courses meeting the following rules:\nAny CNS, CSC, ECT, GAM, GPH, HCI, HIT, IS, IT, PM, SE, or TDC course in the 421-699 range qualifies.",
+            "Computer Science": "4 courses from one area and 4 additional courses from any area. Including the option to take the 2-course SE Studio sequence, the 2-course GAM studio sequence, the 1-course CS capstone, the Research Colloquium course, or write an MS Thesis, or develop an MS Research Project."
         }
 
 
