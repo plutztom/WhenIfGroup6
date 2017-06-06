@@ -15,7 +15,6 @@ class Course:
         self.prereqs = prereqs
         self.online = online
 
-
     def getName(self):
         return self.name
 
@@ -23,7 +22,8 @@ class Course:
         return self.tag
 
     def getPrereqs(self):
-        return self.prereqs
+        return self.prereqs\
+
 
     def getTerms(self):
         return self.quarters
