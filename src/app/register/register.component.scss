@@ -1,0 +1,81 @@
+$break-small: 767px;
+$padding: 20px;
+.header-name {
+    font-weight: 300;
+}
+
+label {
+    font-size: 19px;
+}
+
+md-card {
+    padding: 0;
+}
+
+md-card-header {
+    padding-top: 25px;
+}
+
+md-select {
+    padding: $padding;
+}
+
+.full-name {
+    margin-top: 5px;
+}
+
+.full-width {
+    width: 93%;
+    padding-left: $padding;
+}
+
+.outside-full-width {
+    width: 93%;
+    padding-left: $padding;
+}
+
+// .tabs {
+//     padding-left: 15px;
+//     padding-right: 15px;
+// }
+.radio-group {
+    @media screen and (min-width: $break-small) {
+        display: inline-flex;
+        flex-direction: row;
+    }
+    @media screen and (max-width: $break-small) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.label {
+    margin: 15px 0;
+}
+
+.radio-button {
+    margin-right: 15px;
+    padding-left: 15px;
+}
+
+.selected-value {
+    padding-left: $padding;
+    padding-top: $padding;
+}
+
+.button-align {
+    margin-left: 15px;
+}
+
+md-card {
+    margin: 30px 0 30px 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+md-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: auto;
+    // padding-left: 30px;
+}

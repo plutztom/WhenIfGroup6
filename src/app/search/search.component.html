@@ -1,0 +1,13 @@
+<div class="searchBarMain">
+    <i class="material-icons searchBarSearchIcon noUserSelect">search</i>
+    <input placeholder="Search For Classes..." type="text" value="" id="searchBarInput" [mdAutocomplete]="autocomplete" name="header-search" [formControl]="searchCtrl" (keyup)="searchTerm$.next($event.target.value)">
+    <div *ngIf="searchService.loading">
+        <md-progress-spinner mode="indeterminate" color="accent" strokeWidth="10"></md-progress-spinner>
+    </div>
+</div>
+
+<md-autocomplete #autocomplete="mdAutocomplete">
+    <md-option *ngFor="let result of results | slice:0:5" [value]="result">
+        {{ result.name }}
+    </md-option>
+</md-autocomplete>
