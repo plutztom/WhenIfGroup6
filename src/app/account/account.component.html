@@ -2,7 +2,6 @@
     <button md-button [routerLink]="['/']">When If?</button>
 
     <span class="spacer"></span>
-    <!--<button md-button [routerLink]="['/account']" disabled>My Account</button>-->
     <button md-raised-button color="warn" [routerLink]="['/login']">Logout</button>
 
 </md-toolbar>
@@ -16,67 +15,59 @@
                         <h2 class="header-name">My Account</h2>
                     </md-card-header>
                     <!-- User has child interfaces Faculty and Student, which each have different variables that are needed for each. An issue comes up that JavaScript cannot overload functions (see: https://stackoverflow.com/questions/13212625/typescript-function-overloading). Because of this, TypeScript has 'Unions' that can be used for similar functions (see: https://stackoverflow.com/questions/13212625/typescript-function-overloading).The issue is that I'm checking if the user is a student or an advisor using ngIf, but have no way to check in ngModel and value since the typescript does not continue. My (hopefully working) solution to this is to create a 'UserInfo' interface in account.component.ts which has all the options from both student and faculty. Since the TS can differentiate between the two when currentUser is called, the constructor sets whichever variables are needed to their respective one in the userInfo for use here. -->
-
+                    <hr>
                     <md-card-content>
                         <div *ngIf="currentUser.isAdvisor == 0">
+                            <div fxLayout="column" fxLayoutAlign="space-between stretch" class="full-width">
+                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                                    <label class="label" for="fullname">Full Name: </label>
+                                    <md-input-container class="full-width">
+                                        <input mdInput [(ngModel)]="currentUser.fullName" value="{{currentUser.fullName}}" type="text" class="form-control" name="fullname" id="student-name" required #fullName />
+                                    </md-input-container>
+                                </div>
 
-                            <!--<div *ngIf="checkUser(currentUser) === 'student' || null">-->
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="Full Name" value="{{currentUser.fullName}}" type="text" class="form-control" name="fullname" id="student-name" required #fullName />
-                            </md-input-container>
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="DePaul ID Number" type="number" class="form-control" id="student-id" value="{{currentUser.depaulID}}" maxlength="7" required>
-                            </md-input-container>
-                            <!--<label class="selected-value">Current Student Status</label>
-                        <md-select placeholder="Current Status" [(ngModel)]="userInfo.status">
-                            <md-option *ngFor="let status of statuses" value="{{userInfo.status}}">
-                                {{status}}
-                            </md-option>
-                        </md-select>-->
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="Phone Number" type="tel" class="form-control" name="phone" id="phone" value="{{currentUser.phone}}" required #phone minlength="10" maxlength="11" />
-                            </md-input-container>
+                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                                    <label for="depaulID">DePaul ID: </label>
+                                    <md-input-container class="full-width">
+                                        <input mdInput name="depaulID" [(ngModel)]="currentUser.depaulID" type="number" value="{{currentUser.depaulID}}" maxlength="7">
+                                    </md-input-container>
+                                </div>
 
-                            <label>Home Address</label>
-                            <md-input-container class="full-width">
-                                <textarea mdInput placeholder="Address" value="{{currentUser.address}}"></textarea>
-                            </md-input-container>
-                            <md-input-container class="full-width">
-                                <textarea mdInput placeholder="Address 2" value="{{currentUser.address2}}"></textarea>
-                            </md-input-container>
-                            <table class="full-width" cellspacing="0">
-                                <tr>
-                                    <td>
-                                        <md-input-container class="full-width">
-                                            <input mdInput placeholder="City" value="{{currentUser.city}}">
-                                        </md-input-container>
-                                    </td>
-                                    <td>
-                                        <md-input-container class="full-width">
-                                            <input mdInput placeholder="State" value="{{currentUser.state}}">
-                                        </md-input-container>
-                                    </td>
-                                    <td>
-                                        <md-input-container class="full-width">
-                                            <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="{{currentUser.zip}}">
-                                            <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-                                        </md-input-container>
-                                    </td>
-                                </tr>
-                            </table>
-                            <!--</div>-->
+                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                                    <label for="status">Current Major: </label>
+                                    <md-select [(ngModel)]="currentUser.major" name="status" class="full-width">
+                                        <md-option *ngFor="let major of majors" [value]="status">
+                                            {{status}}
+                                        </md-option>
+                                    </md-select>
+                                </div>
 
-                            <!--<div *ngIf="checkUser(currentUser) === 'advisor'">
-                        </div>-->
+                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                                    <label for="status">Current Student Status: </label>
+                                    <md-select [(ngModel)]="currentUser.status" name="status" class="full-width">
+                                        <md-option *ngFor="let status of statuses" [value]="status">
+                                            {{status}}
+                                        </md-option>
+                                    </md-select>
+                                </div>
+
+                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center">
+                                    <label for="depaulID">Phone Number: </label>
+                                    <md-input-container class="full-width">
+                                        <input mdInput placeholder="Phone Number" type="tel" class="form-control" name="phone" id="phone" value="{{currentUser.phone}}" required #phone minlength="10" maxlength="11" />
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div *ngIf="currentUser.isAdvisor == 1">
+                                <md-input-container class="full-width">
+                                    <input mdInput placeholder="Full Name" value="{{currentUser.fullName}}" type="text" class="form-control" name="fullname" id="student-name" required #fullName />
+                                </md-input-container>
+                                <md-input-container class="full-width">
+                                    <input mdInput placeholder="DePaul ID Number" type="number" class="form-control" id="student-id" value="{{currentUser.depaulID}}" maxlength="7" required>
+                                </md-input-container>
+                            </div>
                         </div>
-                        <div *ngIf="currentUser.isAdvisor == 1">
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="Full Name" value="{{currentUser.fullName}}" type="text" class="form-control" name="fullname" id="student-name" required #fullName />
-                            </md-input-container>
-                            <md-input-container class="full-width">
-                                <input mdInput placeholder="DePaul ID Number" type="number" class="form-control" id="student-id" value="{{currentUser.depaulID}}" maxlength="7" required>
-                            </md-input-container>
-                        </div>
+
                     </md-card-content>
                     <md-card-actions>
                         <div class="d-flex justify-content-between">

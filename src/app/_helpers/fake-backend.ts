@@ -49,11 +49,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             status: user.status,
                             phone: user.phone,
                             dateOfBirth: user.dateOfBirth,
-                            address: user.address,
-                            address2: user.address2,
-                            city: user.city,
-                            state: user.state,
-                            zip: user.zip,
+                            major: user.major,
 
                             token: 'fake-jwt-token'
                         }

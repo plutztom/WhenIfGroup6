@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { Student } from '../_models/user';
 import { Faculty } from '../_models/user';
@@ -28,7 +28,7 @@ export class UserService {
 
     // Design sheet calls for people to be able to delete themselves.
     delete(id: number) {
-         return this.http.delete('/api/users/' + id, UserService.jwt()).map((response: Response) => response.json());
+        return this.http.delete('/api/users/' + id, UserService.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods
@@ -36,8 +36,8 @@ export class UserService {
         // create authorization header with jwt token
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
-            const headers = new Headers({'Authorization': 'Bearer ' + currentUser.token});
-            return new RequestOptions({headers: headers});
+            const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            return new RequestOptions({ headers: headers });
         }
     }
 }
