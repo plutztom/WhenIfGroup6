@@ -1,3 +1,4 @@
+$padding: 20px;
 .spacer {
     flex: 1 1 auto;
 }
@@ -7,7 +8,8 @@ md-card-header {
 }
 
 .full-width {
-    width: 100%;
+    width: 93%;
+    padding-left: $padding;
 }
 
 md-card-actions {

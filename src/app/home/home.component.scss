@@ -1,6 +1,12 @@
-$nav-height: 40px;
+$break-small: 767px;
+$nav-height: 100px;
 .spacer {
     flex: 1 1 auto;
+}
+
+md-toolbar {
+    position: fixed;
+    z-index: 9999;
 }
 
 .main {
@@ -15,12 +21,42 @@ form {
     padding-top: 15px;
 }
 
+.full-width {
+    width: 93%;
+}
+
 label {
     font-size: 19px;
 }
 
+.row label {
+    margin-left: 15px;
+}
+
+.radio-group {
+    @media screen and (min-width: $break-small) {
+        display: inline-flex;
+        flex-direction: row;
+    }
+    @media screen and (max-width: $break-small) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.radio-button {
+    margin-right: 15px;
+    padding-left: 15px;
+}
+
 md-select {
     padding: 0 5px 0 5px;
+}
+
+md-card {
+    margin: 30px 0 30px 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 md-card-actions {

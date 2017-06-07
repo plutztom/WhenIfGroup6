@@ -8,16 +8,12 @@ label {
     font-size: 19px;
 }
 
-md-card {
-    padding: 0;
-}
-
 md-card-header {
     padding-top: 25px;
 }
 
 md-select {
-    padding: $padding;
+    padding-left: $padding;
 }
 
 .full-name {
@@ -34,10 +30,6 @@ md-select {
     padding-left: $padding;
 }
 
-// .tabs {
-//     padding-left: 15px;
-//     padding-right: 15px;
-// }
 .radio-group {
     @media screen and (min-width: $break-small) {
         display: inline-flex;

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import { MdSnackBar } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import {AlertService} from '../_services/alert.service';
-import {AuthenticationService} from '../_services/authentication.service';
+import { AlertService } from '../_services/alert.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
     moduleId: module.id,
@@ -22,10 +23,10 @@ export class LoginComponent implements OnInit {
     }
 
     constructor(private route: ActivatedRoute,
-                private router: Router,
-                private authenticationService: AuthenticationService,
-                private alertService: AlertService) {
-    }
+        private router: Router,
+        private authenticationService: AuthenticationService,
+        private alertService: AlertService,
+        public snackBar: MdSnackBar) {}
 
     ngOnInit() {
         // reset login status
@@ -38,11 +39,12 @@ export class LoginComponent implements OnInit {
     login() {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                });
+            data => {
+                this.router.navigate([this.returnUrl]);
+            },
+            error => {
+                this.snackBar.open(error, 'Dismiss', {
+                    duration: 5000,
+                });            });
     }
 }

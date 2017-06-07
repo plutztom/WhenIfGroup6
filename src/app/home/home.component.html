@@ -9,45 +9,50 @@
 <div class="container flexbox-parent">
     <div fxLayout="column" fxLayoutAlign="space-around center" style="min-height: 600px" class="main">
         <h1>Welcome, {{currentUser.fullName}}.</h1>
-        <div class="col-8">
+        <div class="col-12">
             <div *ngIf="currentUser.isAdvisor == 0 || currentUser.isAdvisor == null">
                 <md-card class="flex-item">
-                    <!-- Student View -->
+                    <!-- ----------------------------------- Student View ----------------------------------- -->
                     <md-card-header>
                         <h3>When would I finish, if...</h3>
                     </md-card-header>
                     <hr>
                     <md-card-content>
                         <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && whenIf()" novalidate>
+                            <div *ngIf="currentUser.major == 'MS Information Systems'">
+                                <div class="row">
+                                    <label for="concentration">I want to concentrate in:</label>
+                                    <md-select placeholder="Concentration" [(ngModel)]="choice.concentration" name="choice.concentration">
+                                        <md-option *ngFor="let concentration of isConcentrations" [value]="concentration">
+                                            {{concentration}}
+                                        </md-option>
+                                    </md-select>
+                                </div>
+                            </div>
                             <div class="row">
                                 <label for="quarter">I start in</label>
-                                <md-select placeholder="Quarter" [(ngModel)]="quarterValue" name="quarter">
+                                <md-select placeholder="Quarter" (ngModel)="choice.enteringQuarter" name="quarter">
                                     <md-option *ngFor="let quarter of quarters" [value]="quarter">
                                         {{quarter}}
                                     </md-option>
                                 </md-select>
-
-                                <md-select placeholder="Year" [(ngModel)]="yearValue" name="year">
-                                    <md-option *ngFor="let year of years" [value]="year">
-                                        {{year}}
-                                    </md-option>
-                                </md-select>
-                                <label for="year">,</label>
                             </div>
                             <div class="row">
-                                <md-checkbox name="isWorking" [(ngModel)]="isWorking" (change)="onChange" align="end" color="primary">
-                                    <label for="isWorking">I'm working during school</label>
-                                </md-checkbox>
-                                <label for="isWorking">,</label>
+                                <label for="isWorking">I prefer classes:</label>
+                                <md-radio-group class="radio-group" (ngModel)="choice.preferOnline" name="genderType">
+                                    <md-radio-button class="radio-button" *ngFor="let type of classTypes" [value]="type">
+                                        {{type}}
+                                    </md-radio-button>
+                                </md-radio-group>
                             </div>
                             <div class="row">
                                 <label for="classesPerQuarter">I take no more than</label>
-                                <md-select placeholder="Number of Classes" [(ngModel)]="classesPerQuarter" name="classesPerQuarter">
+                                <md-select placeholder="Number of Classes" (ngModel)="choice.numCourses" name="classesPerQuarter">
                                     <md-option *ngFor="let number of numbers" [value]="number">
                                         {{number}}
                                     </md-option>
                                 </md-select>
-                                <label for="classesPerQuarter">classes per quarter,</label>
+                                <label for="classesPerQuarter">classes per quarter</label>
                             </div>
                             <!-- TODO: Add more options!!! -->
                         </form>
@@ -60,7 +65,9 @@
                 </md-card>
             </div>
         </div>
-        <!-- Advisor View -->
+
+
+        <!-- ----------------------------------- Advisor View ----------------------------------- -->
         <div class="main col-8">
 
             <div *ngIf="currentUser.isAdvisor == 1">

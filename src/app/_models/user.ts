@@ -18,11 +18,8 @@ export interface User {
     dateOfBirth?:    Date;
     email?:          string;
     phone?:          number;
-    address?:        string;
-    address2?:       string;
-    city?:           string;
-    state?:          string;
-    zip?:            number;
+
+    major?:          string;
 }
 
 export class Faculty implements User {
@@ -43,11 +40,8 @@ export class Faculty implements User {
     dateOfBirth?:    Date;
     email:           string;
     phone?:          number;
-    address?:        string;
-    address2?:       string;
-    city?:           string;
-    state?:          string;
-    zip?:            number;
+
+    major?:          string;
 
 }
 
@@ -69,9 +63,7 @@ export class Student implements User {
     dateOfBirth?:    Date;
     email:           string;
     phone?:          number;
-    address?:        string;
-    address2?:       string;
-    city?:           string;
-    state?:          string;
-    zip?:            number;
+
+    major:          string;
+
 }

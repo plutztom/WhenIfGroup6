@@ -33,11 +33,16 @@ export class RegisterComponent {
         'Student',
         'Advisor',
     ];
+    majors = [
+        'MS Computer Science',
+        'MS Information Systems',
+    ]
 
     constructor(private router: Router,
-                private userService: UserService,
-                private alertService: AlertService,
-                public snackBar: MdSnackBar) {
+        private userService: UserService,
+        private alertService: AlertService,
+        public snackBar: MdSnackBar) {
+        this.model.isAdvisor = 0; // Defaults to 0 (Student)
     }
 
     onGenderChange(genderType: string) {
@@ -45,22 +50,19 @@ export class RegisterComponent {
     }
 
     register() {
-        // Set Advisor status based on Current Tab
-        // if (this.currentTab === 0) { this.model.isAdvisor = false; } else { this.model.isAdvisor = true; }
-
         this.userService.create(this.model)
             .subscribe(
-                data => {
-                    this.router.navigate(['/']);
-                    this.snackBar.open('Registration Successful', 'Dismiss', {
-                        duration: 2000,
-                    });
-                },
-                error => {
-                    this.snackBar.open('Error: ' + error, 'Dismiss', {
-                        duration: 2000,
-                    });
+            data => {
+                this.router.navigate(['/']);
+                this.snackBar.open('Registration Successful', 'Dismiss', {
+                    duration: 2000,
                 });
+            },
+            error => {
+                this.snackBar.open('Error: ' + error, 'Dismiss', {
+                    duration: 2000,
+                });
+            });
     }
 
 }
